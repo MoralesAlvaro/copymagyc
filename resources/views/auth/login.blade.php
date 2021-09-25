@@ -19,7 +19,7 @@
                     <span class="fas fa-envelope"></span>
                   </div>
                 </div>
-                <x-auth-validation-errors class="mb-0" :errors="$errors" campo="email"/>
+                <x-auth-validation-errors class="" :errors="$errors" campo="email"/>
               </div>
               <div class="input-group mb-3">
                 <input name="password" type="password" class="form-control" placeholder="Contraseña">
@@ -28,7 +28,7 @@
                     <span class="fas fa-lock"></span>
                   </div>
                 </div>
-                <x-auth-validation-errors class="mb-0" :errors="$errors" campo="email"/>
+                <x-auth-validation-errors class="" :errors="$errors" campo="email"/>
               </div>
               <div class="row">
                 <div class="col-8">
