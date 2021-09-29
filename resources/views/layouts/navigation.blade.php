@@ -8,8 +8,8 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{url('dashboard')}}" class="nav-link">Home</a>
       </li>
-    </ul>
-  </nav>
+    </nav>
+  </ul>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -22,15 +22,34 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
+      <style>
+        .user{
+          height: 40px;
+          width: 40px;
+        }
+      </style>
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+      <div class="mt-3 pb-3 mb-3 d-flex">
+        <div class="image" data-toggle="dropdown">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2 user" alt="User Image">
         </div>
-        <div class="info">
-          <a href="" class="d-block">{{Auth::user()->name}}</a>
+        <div class="dropdown-menu elevado max-w-x-small" role="menu">
+          <a class="dropdown-item text-primary" href="#">Perfil</a>
+          <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+            {{ __('Cerrar Sesión') }}
+          </a>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+          </form>
+        </div>
+        <div class="info ml-2 mr-2">
+          <a href="" class="d-block">{{Auth::user()->name}}</a>          
         </div>
       </div>
+      
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -38,32 +57,9 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Módulo Usuarios
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
+            <x-group-link nameGroup="Modulo Usuarios"></x-group-link>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/mailbox/mailbox.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inbox</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/mailbox/compose.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Compose</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/mailbox/read-mail.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Read</p>
-                </a>
-              </li>
+              <x-link-group link="{{ route('dashboard') }}" nameLink="Usuarios"></x-link-group>
             </ul>
           </li>
         </ul>
