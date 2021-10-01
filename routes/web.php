@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::group([
+], function () { 
+    // Route::get('user.register', [UserController::class, 'index'])->name('/user/register');
+    Route::resource('user', UserController::class)->middleware(['auth']);
+});
 
 require __DIR__.'/auth.php';

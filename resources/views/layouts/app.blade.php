@@ -40,7 +40,7 @@
 
     <!-- Page Content -->
     <main>
-      {{ $slot }}
+      @yield('content')
     </main>
 
     <footer class="main-footer">
