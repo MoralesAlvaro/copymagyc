@@ -46,7 +46,7 @@
           </form>
         </div>
         <div class="info ml-2 mr-2">
-          <a href="" class="d-block">{{Auth::user()->name}}</a>          
+          <a href="" class=" ">{{Auth::user()->name}}</a>     
         </div>
       </div>
       

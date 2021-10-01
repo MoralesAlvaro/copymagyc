@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('auth.create');
+        return view('user.create');
     }
 
     /**
@@ -24,6 +24,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('user.create');
     }
 
     /**
@@ -35,6 +36,34 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        // Validando data
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'photo' => '',
+        ]);
+
+        
+        $user = new User([
+            'name' => $request->get('name'),
+            'lastName' => $request->get('lastName'),
+            'email' => $request->get('email'),
+            'password' => Hash::make($request->get('password')),
+            'photo' => '',
+        ]);
+
+        $user->save();
+            
+        // IMG
+        if ($request->file('photo')) {
+            // Ruta de guardado
+            $pathImgUrl = Storage::disk('public')->put('img/usuarios', $request->file('photo'));
+            // Actualizando ruta img
+            $user->fill(['photo' => asset($pathImgUrl)])->save();
+        }
+        
+        return redirect('/usuarios/create')->with('success', 'El usuario se ha registrado correctamente!.');
     }
 
     /**
