@@ -88,17 +88,6 @@
     <!-- /.card-body -->
 
     <div class="row">
-
-      <div class="col-md-6">
-        {{-- Active --}}
-        <div class="form-group pl-4 pb-1">
-          <label for="active">Activar Usuario</label>
-          <div class="custom-switch">
-            <input type="checkbox" class="custom-control-input" id="active" name="active">
-            <label class="custom-control-label" for="active">Inactivo - Activo</label>
-          </div>
-        </div>
-      </div>
       <div class="col-md-6">
         <div class="card-footer">
           <button type="submit" class="btn btn-info btn-lg btn-block">Submit</button>

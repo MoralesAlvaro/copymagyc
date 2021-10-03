@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\ParameterController;
 
 
 /*
@@ -29,6 +30,7 @@ Route::group([
     // Route::get('user.register', [UserController::class, 'index'])->name('/user/register');
     Route::resource('user', UserController::class)->middleware(['auth']);
     Route::resource('supplier', SupplierController::class)->middleware(['auth']);
+    Route::resource('parameter', ParameterController::class)->middleware(['auth']);
 });
 
 require __DIR__.'/auth.php';
