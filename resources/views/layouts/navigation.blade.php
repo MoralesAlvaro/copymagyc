@@ -82,7 +82,7 @@
                 <li class="nav-item">
                     <x-group-link nameGroup="Modulo Proveedores"><i class="fas fa-cart-arrow-down"></i></x-group-link>
                     <ul class="nav nav-treeview">
-                        <x-link-group link="{{ route('dashboard') }}" nameLink="Proveedores"><i
+                        <x-link-group link="{{ route('supplier.index') }}" nameLink="Proveedores"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
                     </ul>
                 </li>
