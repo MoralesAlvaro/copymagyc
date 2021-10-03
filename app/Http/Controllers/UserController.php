@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -13,7 +14,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.create');
+        $slug = 'user';
+        $encabezados= ['ID', 'Nombre', 'Apellido', 'Correo', 'Estado'];
+        $campos= ['id', 'name', 'lastName', 'email','active'];
+        $data = User::orderBy('id', 'DESC')->paginate(1000);
+        return view('user.index', compact('slug','encabezados', 'campos', 'data'));
     }
 
     /**
