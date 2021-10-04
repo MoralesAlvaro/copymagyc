@@ -59,7 +59,7 @@
                 <li class="nav-item">
                     <x-group-link nameGroup="Modulo Clientes"><i class="fas fa-vote-yea"></i></x-group-link>
                     <ul class="nav nav-treeview">
-                        <x-link-group link="{{ route('dashboard') }}" nameLink="Clientes"><i
+                        <x-link-group link="{{ route('customers.index') }}" nameLink="Clientes"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
                     </ul>
                 </li>
