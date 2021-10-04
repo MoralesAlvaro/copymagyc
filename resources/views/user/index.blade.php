@@ -4,7 +4,7 @@
 
 {{-- Notification --}}
 <div class="container">
-    <!-- Mensaje de confirmación -->
+    <!-- Mensaje de confirmación nljpnlhohklhkhoho -->
     @if (session('success'))
     <div class="alert alert-success text-center msg alert-dismissible fade show" id="success" role="alert">
         <strong>{{ session('success') }}</strong>
