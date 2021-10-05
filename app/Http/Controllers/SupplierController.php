@@ -13,8 +13,12 @@ class SupplierController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {        
+        $slug = 'user';
+        $encabezados= ['ID', 'Nombre', 'Dirección', 'Tipo de Empresa', 'Correo'];
+        $campos= ['id', 'name', 'address', 'company_type', 'email'];
+        $data = Supplier::orderBy('id', 'DESC')->paginate();
+        return view('supplier.index', compact('slug','encabezados', 'campos', 'data'));
     }
 
     /**

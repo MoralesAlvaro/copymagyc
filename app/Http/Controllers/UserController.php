@@ -19,7 +19,7 @@ class UserController extends Controller
         $slug = 'user';
         $encabezados= ['ID', 'Nombre', 'Apellido', 'Correo'];
         $campos= ['id', 'name', 'surname', 'email'];
-        $data = User::orderBy('id', 'DESC')->paginate(1000);
+        $data = User::orderBy('id', 'DESC')->paginate(1);
         return view('user.index', compact('slug','encabezados', 'campos', 'data'));
     }
 

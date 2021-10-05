@@ -144,21 +144,5 @@
 </div>
 
 
-<<<<<<< HEAD
-=======
-      </div>
-    </div>
-    <!-- /.card-body -->
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card-footer">
-          <button type="submit" class="btn btn-info btn-lg btn-block">Submit</button>
-        </div>
-      </div>
-    </div>
-  </form>
-</x-form-container>
->>>>>>> 4b9bef193492510c119d48a0db4b54bf170573a9
 
 @endsection
