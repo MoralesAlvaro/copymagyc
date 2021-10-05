@@ -18,10 +18,12 @@ class DatabaseSeeder extends Seeder
         // Reseteando tablas
         $this->truncateTables([
             'users',
+            'suppliers',
         ]);
 
         // Sembrando
         $this->call(UserSeeder::class);
+        $this->call(SupplierSeeder::class);
 
     }
 
