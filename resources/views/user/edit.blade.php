@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
-{{-- Notification --}}
 <div class="content-wrapper pt-3">
+
+    {{-- Notification --}}
     <div class="container">
         <!-- Mensaje de confirmación -->
         @if (session('success'))
@@ -22,10 +22,11 @@
             <div class="m-3 py-2">
                 <x-btn nameBtn="Regresar" :slug="$slug.'.index'"></x-btn>
             </div>
-            <x-form-container nameForm="Registrar Usuarios" :slug="$slug">
+            <x-form-container nameForm="Editar Usuarios" :slug="$slug">
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route($slug.'.update', $data->id) }}" enctype="multipart/form-data">
+                @method('PATCH') 
                     @csrf
 
                     <div class="card-body">
@@ -36,7 +37,7 @@
                                 <div class="form-group">
                                     <label for="name">Nombre</label>
                                     <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Copy Magic">
+                                        value="{{$data->name}}" placeholder="Copy Magic">
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="name" />
                             </div>
@@ -46,7 +47,7 @@
                                 <div class="form-group">
                                     <label for="surname">Apellidos</label>
                                     <input type="surname" name="surname" class="form-control" id="surname"
-                                        placeholder="surname">
+                                        value="{{$data->surname}}" placeholder="surname">
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="surname" />
                             </div>
@@ -56,29 +57,9 @@
                                 <div class="form-group">
                                     <label for="email">Correo</label>
                                     <input type="email" name="email" class="form-control" id="email"
-                                        placeholder="copymagic@gmail.com">
+                                        value="{{$data->email}}" placeholder="copymagic@gmail.com">
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="email" />
-                            </div>
-
-                            {{-- Password --}}
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="password">Contraseña</label>
-                                    <input type="password" name="password" class="form-control" id="password"
-                                        placeholder="************">
-                                </div>
-                                <x-auth-validation-errors class="" :errors="$errors" campo="password" />
-                            </div>
-
-                            {{-- Confirm Password --}}
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="password_confirmation">Confirmar Contraseña</label>
-                                    <input type="password" name="password_confirmation"
-                                        class="form-control" id="password_confirmation" placeholder="************">
-                                </div>
-                                <x-auth-validation-errors class="" :errors="$errors" campo="password" />
                             </div>
 
                             {{-- Avatar --}}
@@ -90,7 +71,7 @@
                                     </div>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="avatar" name="avatar"
-                                            aria-describedby="avatar">
+                                            aria-describedby="avatar" value="{{$data->avatar}}">
                                         <label class="custom-file-label" for="avatar">Buscar Archivo</label>
                                     </div>
                                 </div>
@@ -102,8 +83,13 @@
                                 <div class="form-group">
                                     <label for="is_admin">Tipo usuario</label>
                                     <select name="is_admin" class="form-control select2" style="width: 100%;">
+                                        @if ($data->is_admin == 1)
+                                        <option value="1">Administrador</option>
+                                        <option value="0">Empleado</option>
+                                        @else
                                         <option value="0">Empleado</option>
                                         <option value="1">Administrador</option>
+                                        @endif
                                     </select>
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="is_admin" />
@@ -114,8 +100,13 @@
                                 <div class="form-group">
                                     <label for="active">Tipo usuario</label>
                                     <select name="active" class="form-control select2" style="width: 100%;">
+                                        @if ($data->active == 1)
                                         <option value="1">Activo</option>
                                         <option value="0">Inactivo</option>
+                                        @else
+                                        <option value="0">Inactivo</option>
+                                        <option value="1">Activo</option>
+                                        @endif
                                     </select>
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="active" />
