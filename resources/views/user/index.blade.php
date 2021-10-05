@@ -2,6 +2,23 @@
 
 @section('content')
 
+<<<<<<< HEAD
+=======
+{{-- Notification --}}
+<div class="container">
+    <!-- Mensaje de confirmación nljpnlhohklhkhoho -->
+    @if (session('success'))
+    <div class="alert alert-success text-center msg alert-dismissible fade show" id="success" role="alert">
+        <strong>{{ session('success') }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+    <!-- EDasdsadasdaje de confirmación -->
+</div>
+
+>>>>>>> 4b9bef193492510c119d48a0db4b54bf170573a9
 <div class="content-wrapper pt-3">
 
     {{-- Notification --}}
