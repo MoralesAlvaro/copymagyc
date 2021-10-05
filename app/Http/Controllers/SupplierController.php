@@ -14,8 +14,8 @@ class SupplierController extends Controller
      */
     public function index()
     {        
-        $slug = 'user';
-        $encabezados= ['ID', 'Nombre', 'Dirección', 'Tipo de Empresa', 'Correo'];
+        $slug = 'supplier';
+        $encabezados= ['ID', 'Nombre', 'Dirección', 'Empresa', 'Correo'];
         $campos= ['id', 'name', 'address', 'company_type', 'email'];
         $data = Supplier::orderBy('id', 'DESC')->paginate();
         return view('supplier.index', compact('slug','encabezados', 'campos', 'data'));
@@ -29,6 +29,8 @@ class SupplierController extends Controller
     public function create()
     {
         //
+        $slug = 'supplier';
+        return view('supplier.create', compact('slug'));
     }
 
     /**
