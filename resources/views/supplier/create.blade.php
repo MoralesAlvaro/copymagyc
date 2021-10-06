@@ -62,7 +62,14 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="company-type">Tipo de compañia</label>
-                      <input type="text" name="company-type" class="form-control" id="company-type" placeholder="Tipo de Compañia">
+                        <select name="company_type" class="form-control select2" style="width: 100%;" id="company-type"
+                                         placeholder=" tipo">
+                                 <option value="">Pequeña</option>
+                                 <option value="">Mediana</option>
+                                <option value="">Grande</option>
+
+                                    </select> 
+
                     </div>
                   </div>
 
@@ -70,7 +77,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="business">Negocio</label>
-                      <input type="text" name="business" class="form-control" id="business" placeholder="Negocio">
+                      <input type="text" name="business" class="form-control" id="business" placeholder="Giro de la empresa">
                     </div>
                   </div>
 

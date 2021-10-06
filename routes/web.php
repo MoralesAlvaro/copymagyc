@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\raw_materialsController;
+
 
 
 
@@ -33,6 +35,8 @@ Route::group([
     Route::resource('supplier', SupplierController::class)->middleware(['auth']);
     Route::resource('customers', CustomersController::class)->middleware(['auth']);
     Route::resource('parameter', ParameterController::class)->middleware(['auth']);
+    Route::resource('raw_materials', raw_materialsController::class)->middleware(['auth']);
+
 });
 
 require __DIR__.'/auth.php';

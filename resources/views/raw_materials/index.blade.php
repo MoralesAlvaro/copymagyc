@@ -32,7 +32,7 @@
             <div class="col-md-12">
                 <div class="card card-purple">
                     <div class="card-header">
-                        <h3 class="card-title">Registro de Usuarios</h3>
+                        <h3 class="card-title">Registro de materia prima</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -134,5 +134,7 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
+    
 </div>
 @endsection
