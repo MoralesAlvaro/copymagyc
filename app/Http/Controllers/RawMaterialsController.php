@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\raw_materials;
+use App\Models\RawMaterials;
 use Illuminate\Http\Request;
 
-class raw_materialsController extends Controller
+class RawMaterialsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class raw_materialsController extends Controller
         $slug = 'raw_materials';
         $encabezados= ['ID', 'Codigo', 'Nombre', 'Fecha', 'Cantidad', 'Comentarios'];
         $campos= ['id', 'code', 'name', 'buy_date', 'amount', 'commetn'];
-        $data = raw_materials::orderBy('id', 'DESC')->paginate();
+        $data = RawMaterials::orderBy('id', 'DESC')->paginate();
         return view('raw_materials.index', compact('slug','encabezados', 'campos', 'data'));
     }
 
