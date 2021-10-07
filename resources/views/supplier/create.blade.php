@@ -30,34 +30,40 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name-supplier">Nombre</label>
-                                        <input type="text" name="name-supplier" class="form-control" id="name-supplier"
-                                            placeholder="Nombre proveedor">
+                                        <input type="text" name="name" class="form-control" id="name"
+                                           required placeholder="Nombre del Proveedor" value="{{ old('name') }}">
                                     </div>
+                                    <x-auth-validation-errors class="" :errors="$errors" campo="name" />
                                 </div>
 
                                 {{-- Address --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="address">Dirección</label>
-                                        <input type="text" name="address-supplier" class="form-control"
-                                            id="address-supplier" placeholder="Dirección">
+                                        <input type="text" name="address" class="form-control"
+                                            id="address" required placeholder="Dirección del Proveedor" value="{{ old('address') }}">
                                     </div>
+                                    <x-auth-validation-errors class="" :errors="$errors" campo="address" />
                                 </div>
 
                                 {{-- NRC --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="nrc">NRC</label>
-                                        <input type="nrc" name="nrc" class="form-control" id="nrc" placeholder="NRC">
+                                        <input type="nrc" name="nrc" class="form-control" id="nrc"
+                                            required placeholder="Número de Registro de Contribuyente" maxlength="7" minlength="7" value="{{ old('nrc') }}">
                                     </div>
+                                    <x-auth-validation-errors class="" :errors="$errors" campo="nrc" />
                                 </div>
 
                                 {{-- NIT --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="nit">NIT</label>
-                                        <input type="text" name="nit" class="form-control" id="nit" placeholder="NIT">
+                                        <input type="text" name="nit" class="form-control" id="nit"
+                                            required placeholder="Número de Identificación Tributaria" maxlength="17" minlength="16" value="{{ old('nit') }}">
                                     </div>
+                                    <x-auth-validation-errors class="" :errors="$errors" campo="nit" />
                                 </div>
 
                                 {{-- Company Type --}}
@@ -65,47 +71,51 @@
                                     <div class="form-group">
                                         <label for="company-type">Tipo de compañia</label>
                                         <select name="company_type" class="form-control select2" style="width: 100%;"
-                                            id="company-type" placeholder=" tipo">
-                                            <option value="">Pequeña</option>
-                                            <option value="">Mediana</option>
-                                            <option value="">Grande</option>
+                                            id="company_type" required placeholder=" tipo">
+                                            <option value="Pequeña">Pequeña</option>
+                                            <option value="Mediana">Mediana</option>
+                                            <option value="Grande">Grande</option>
                                         </select>
                                     </div>
+                                    <x-auth-validation-errors class="" :errors="$errors" campo="company_type" />
                                 </div>
 
                                 {{-- Business --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="business">Negocio</label>
+                                        <label for="business">Giro de empresa</label>
                                         <input type="text" name="business" class="form-control" id="business"
-                                            placeholder="Giro de la empresa">
+                                            required placeholder="Giro de la empresa" value="{{ old('business') }}">
                                     </div>
+                                    <x-auth-validation-errors class="" :errors="$errors" campo="business" />
                                 </div>
 
                                 {{-- Phone --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="telephone">Télefono</label>
-                                        <input type="text" name="telephone" class="form-control" id="telephone"
-                                            placeholder="Télefono">
+                                        <input type="text" name="telephone" onkeypress="return validarEnteroEnCampo(telephone)" class="form-control" id="telephone" value="{{ old('telephone') }}"
+                                            required placeholder="Télefono" maxlength="8" minlength="8">
                                     </div>
+                                    <x-auth-validation-errors class="" :errors="$errors" campo="telephone" />
                                 </div>
 
-                                {{-- Phone --}}
+                                {{-- Email --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" name="email" class="form-control" id="email"
-                                            placeholder="Email">
+                                        <input type="email" name="email" class="form-control" id="email" value="{{ old('email') }}" required placeholder="Email">
                                     </div>
+                                    <x-auth-validation-errors class="" :errors="$errors" campo="email" />
                                 </div>
 
                                 {{-- DUI --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="dui">DUI</label>
-                                        <input type="text" name="dui" class="form-control" id="dui" placeholder="DUI">
+                                        <input type="text" name="dui" class="form-control" id="dui" required placeholder="DUI" value="{{ old('dui') }}" maxlength="9">
                                     </div>
+                                    <x-auth-validation-errors class="" :errors="$errors" campo="dui" />
                                 </div>
 
                                 {{-- Active --}}
