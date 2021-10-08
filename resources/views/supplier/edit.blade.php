@@ -78,17 +78,17 @@
                                         <label for="company-type">tipo de compañia </label>
                                         <select name="company_type" class="form-control select2" style="width: 100%;"
                                             id="company-type" value="{{ $data->company_type }}" placeholder="">
-                                            @if ($data->active == 'Pequeña')
+                                            @if ($data->company_type == 'Pequeña')
                                             <option value="Pequeña">Pequeña</option>
                                             <option value="Mediana">Mediana</option>
                                             <option value="Grande">Grande</option>
                                             @endif
-                                            @if ($data->active == 'Mediana')
+                                            @if ($data->company_type == 'Mediana')
                                             <option value="Mediana">Mediana</option>
                                             <option value="Pequeña">Pequeña</option>
                                             <option value="Grande">Grande</option>
                                             @endif
-                                            @if ($data->active == 'Grande')
+                                            @if ($data->company_type == 'Grande')
                                             <option value="Grande">Grande</option>
                                             <option value="Mediana">Mediana</option>
                                             <option value="Pequeña">Pequeña</option>

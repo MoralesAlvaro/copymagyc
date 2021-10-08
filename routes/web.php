@@ -3,7 +3,7 @@ use App\Http\Controllers\ParameterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RawMaterialsController;
 
 
@@ -33,7 +33,7 @@ Route::group([
     // Route::get('user.register', [UserController::class, 'index'])->name('/user/register');
     Route::resource('user', UserController::class)->middleware(['auth']);
     Route::resource('supplier', SupplierController::class)->middleware(['auth']);
-    Route::resource('customers', CustomersController::class)->middleware(['auth']);
+    Route::resource('customers', CustomerController::class)->middleware(['auth']);
     Route::resource('parameter', ParameterController::class)->middleware(['auth']);
     Route::resource('raw_materials', RawMaterialsController::class)->middleware(['auth']);
 

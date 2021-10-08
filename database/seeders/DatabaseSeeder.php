@@ -19,11 +19,14 @@ class DatabaseSeeder extends Seeder
         $this->truncateTables([
             'users',
             'suppliers',
+            'customers',
         ]);
 
         // Sembrando
         $this->call(UserSeeder::class);
         $this->call(SupplierSeeder::class);
+        $this->call(CustomerSeeder::class);
+        
 
     }
 
