@@ -25,7 +25,8 @@
       <x-form-container nameForm="Registrar Cliente">
         <!-- /.card-header -->
         <!-- form start -->
-        <form method="POST" action="{{ route('customers.store') }}">
+        <form method="POST" action="{{ route($slug . '.update', $data->id) }}">
+          @method('PATCH')
           @csrf
 
           <div class="card-body">
@@ -33,7 +34,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label for="name">Nombre</label>
-                <input type="text" name="name" class="form-control" id="name" required="" placeholder="Copy Magic" value="{{ old('name') }}">
+                <input type="text" name="name" class="form-control" id="name" required="" placeholder="Copy Magic" value="{{ $data->name }}">
               </div>
               <x-auth-validation-errors class="" :errors=" $errors" campo="name" />
             </div>
@@ -44,7 +45,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="address">Direccion</label>
-                  <input type="text" name="address" class="form-control" id="address" placeholder="Direccion Copy Magic" value="{{ old('address') }}">
+                  <input type="text" name="address" class="form-control" id="address" placeholder="Direccion Copy Magic" value="{{ $data->address }}">
                 </div>
                 <x-auth-validation-errors class="" :errors=" $errors" campo="address" />
               </div>
@@ -53,7 +54,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="nrc"> Número de Registro de Contribuyente</label>
-                  <input type="text" required="" maxlength="7" minlength="6" name="nrc" class="form-control" id="nrc" placeholder="0000000" value="{{ old('nrc') }}">
+                  <input type="text" required=""  name="nrc" class="form-control" id="nrc" placeholder="0000000" value="{{ $data->nrc }}">
                 </div>
                 <x-auth-validation-errors class="" :errors=" $errors" campo="nrc" />
               </div>
@@ -62,7 +63,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="nit"> Número de nit</label>
-                  <input type="text" required="" name="nit" maxlength="17" minlength="16" class="form-control" id="nit" placeholder="1234567891234567" value="{{ old('nit') }}">
+                  <input type="text" required="" name="nit"  class="form-control" id="nit" placeholder="1234567891234567" value="{{ $data->nit }}">
                 </div>
                 <x-auth-validation-errors class="" :errors=" $errors" campo="nit" />
               </div>
@@ -72,9 +73,21 @@
                 <div class="form-group">
                   <label for="company_type">Tipo de compañia</label>
                   <select name="company_type" id="company_type" class="form-control select2" style="width: 100%;">
+                    @if ($data->company_type == 'Pequeña')
                     <option value="Pequeña">Pequeña</option>
                     <option value="Mediana">Mediana</option>
                     <option value="Grande">Grande</option>
+                    @endif
+                    @if ($data->company_type == 'Mediana')
+                    <option value="Mediana">Mediana</option>
+                    <option value="Pequeña">Pequeña</option>
+                    <option value="Grande">Grande</option>
+                    @endif
+                    @if ($data->company_type == 'Grande')
+                    <option value="Grande">Grande</option>
+                    <option value="Mediana">Mediana</option>
+                    <option value="Pequeña">Pequeña</option>
+                    @endif
                   </select> 
                 </div>
                 <x-auth-validation-errors class="" :errors=" $errors" campo="company_type" />
@@ -84,7 +97,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="business"> Giro de empresa</label>
-                  <input type="text" name="business" class="form-control" id="business" placeholder="Principal Actividad de la empresa" value="{{ old('business') }}">
+                  <input type="text" name="business" class="form-control" id="business" placeholder="Principal Actividad de la empresa" value="{{ $data->business }}">
                 </div>
                 <x-auth-validation-errors class="" :errors=" $errors" campo="business" />
               </div>
@@ -94,8 +107,13 @@
                   <div class="form-group">
                       <label for="active">Tipo usuario</label>
                       <select name="active" class="form-control select2" style="width: 100%;">
-                          <option value="1">Activo</option>
-                          <option value="0">Inactivo</option>
+                        @if ($data->active == 1)
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        @else
+                            <option value="0">Inactivo</option>
+                            <option value="1">Activo</option>
+                        @endif
                       </select>
                   </div>
                   <x-auth-validation-errors class="" :errors=" $errors" campo="active" />

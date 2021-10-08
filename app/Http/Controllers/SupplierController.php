@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Supplier;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class SupplierController extends Controller
 {
@@ -119,7 +116,7 @@ class SupplierController extends Controller
             ]);
 
             // Verificando si ha habido modificaciones
-            $campos = ['name', 'surname', 'email', 'is_admin', 'active'];
+            $campos = ['name', 'address', 'nrc', 'nit', 'company_type', 'business', 'telephone', 'email', 'dui', 'active'];
             foreach ($campos as $item) {
                 // Valor traido de la bd
                 $valor_campo_old = $supplier->$item;
