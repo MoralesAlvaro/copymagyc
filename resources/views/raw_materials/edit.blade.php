@@ -22,7 +22,7 @@
             <div class="m-3 py-2">
                 <x-btn nameBtn="Regresar" :slug="$slug.'.index'"></x-btn>
             </div>
-            <x-form-container nameForm="Editar Usuarios" :slug="$slug">
+            <x-form-container nameForm="Editar Materia Prima/Producto" :slug="$slug">
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form method="post" action="{{ route($slug.'.update', $data->id) }}" enctype="multipart/form-data">
@@ -55,8 +55,8 @@
                             {{-- buy_date --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="buy_date">Correo</label>
-                                    <input type="buy_date" name="buy_date" class="form-control" id="buy_date"
+                                    <label for="buy_date">Fecha de compra</label>
+                                    <input type="date" name="buy_date" class="form-control" id="buy_date"
                                         value="{{$data->buy_date}}" placeholder="">
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="buy_date" />
@@ -67,8 +67,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="amount">Cantidad</label>
-                                    <input type="amount" name="amount" class="form-control" id="amount"
-                                        value="{{$data->amount}}" placeholder="">
+                                 <input type="text" name="amount" class="form-control" id="amount"
+                                        value="{{$data->amount}}" placeholder="Copy Magic">
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="amount" />
                             </div>
@@ -76,9 +76,10 @@
                                {{-- commetn --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="commetn">Cantidad</label>
-                                    <input type="text" name="commetn" class="form-control" id="commetn"
-                                        value="{{$data->commetn}}" placeholder="">
+                                    <label for="commetn">Comentarios</label>
+                                    <textarea class="form-control" name="comment" id="comment" rows="5"
+                                        placeholder="Comentario adicional al producto/materia prima"
+                                        value="{{ old('comment') }}"></textarea>
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="commetn" />
                             </div>
