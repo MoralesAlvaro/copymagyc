@@ -99,11 +99,11 @@ class CustomerController extends Controller
             
             // Validando data
             $request->validate([
-                'name' => 'required|string|max:255|unique:customers',
+                'name' => 'required|string|max:255|unique:customers,name,'.$customer->id,
                 'address' => 'required|string|max:255',
-                'nrc' => 'required|numeric',
-                'nit' => 'required|numeric',
-                'company_type' => 'required|string|min:7',
+                'nrc' => 'required|numeric|min:7|unique:customers,nrc,'.$customer->id,
+                'nit' => 'required|numeric|min:17|unique:customers,nit,'.$customer->id,
+                'company_type' => 'required|string|max:7',
                 'business' => 'required|string|max:255',
                 'active' => 'required|boolean',
             ]);
@@ -131,8 +131,14 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy($id)
     {
-        //
+        $data = Customer::find($id);
+        if ($data == null) {
+            return redirect('/customers')->with('success', 'El registro que desea eliminar no se encuentra!.');
+        }
+        
+        $data->delete();
+        return redirect('/customers')->with('success', 'El registro se ha sido eliminado correctamente!.');
     }
 }
