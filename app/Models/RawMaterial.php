@@ -14,7 +14,9 @@ class RawMaterial extends Model
         'name',
         'buy_date',
         'amount',
-        'commetn',
-        'active',
+        'comment',
+        'user_id',
+        'supplier_id',
+        'stationery_type_id',
     ];
 }

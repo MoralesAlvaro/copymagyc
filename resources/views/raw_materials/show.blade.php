@@ -19,12 +19,33 @@
     </div>
     <!-- Main content -->
     <section class="content">
-        <div class="container-fluid">
-            <div class="mx-2 my-2 py-1 px-1">
-                <x-btn nameBtn="Retornar" :slug="$slug.'.index'" />
-            </div>
+            <div class="container-fluid">
+                <div class="mx-2 my-2 py-1 px-1">
+                    <x-btn nameBtn="Retornar" :slug="$slug.'.index'" />
+                </div>
+                <x-card :result="$data->name.' '.$data->name">
+                    <div class="col-6 text-justify">
+                            <x-p-card :result="$data->code" nameLabel="Código" icono="fas fa-barcode" />
+                            <x-p-card :result="$data->name" nameLabel="Nombre" icono="fas fa-barcode" />
+                            <x-p-card :result="$data->buy_date" nameLabel="Fecha de Compra" icono="fas fa-calendar-alt" />
+                            <x-p-card :result="$data->amount" nameLabel="Cantidad" icono="fas fa-cart-plus" />
+                    </div>
 
-    </section>
+                    <div class="col-6 text-justify">
+                        
+                        <x-p-card :result="$data->supplier_id" nameLabel="Proveedor" icono="fas fa-building" />
+                        <x-p-card :result="$data->stationery_type_id" nameLabel="Tipo" icono="fas fa-building" />
+                        <x-p-card :result="$data->user_id" nameLabel="Registrado por" icono="fas fa-user" />
+                        <x-p-card :result="$data->comment" nameLabel="Comentario" icono="fas fa-align-justify" />
+                        <div>
+                            <a style="margin: 19px;" href="{{ route($slug . '.edit', $data->id) }}"
+                                class="btn btn-sm btn-primary sombra_boton">Editar</a>
+                        </div>
+                    </div>
+                </x-card>
+
+
+        </section>
 </div>
 
 @endsection
