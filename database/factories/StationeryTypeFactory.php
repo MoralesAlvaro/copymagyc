@@ -22,7 +22,10 @@ class StationeryTypeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'color' => $this->faker->sentence(3),
+            'size' => $this->faker->numberBetween($min = 100 , $max = 999),
+            'material' => $this->faker->randomElement(['Papalería', 'Otros', 'Varios']),
         ];
     }
 }

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class StationeryType extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'color',
+        'size',
+        'material',
+    ];
 }

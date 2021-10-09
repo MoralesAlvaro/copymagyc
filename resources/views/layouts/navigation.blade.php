@@ -66,7 +66,7 @@
                 <li class="nav-item">
                     <x-group-link nameGroup="Modulo Materia Prima"><i class="fas fa-store-alt"></i></x-group-link>
                     <ul class="nav nav-treeview">
-                        <x-link-group link="{{ route('raw_materials.index') }}" nameLink="Materia Prima"><i
+                        <x-link-group link="{{ route('rawMaterials.index') }}" nameLink="Materia Prima"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
                     </ul>
                 </li>

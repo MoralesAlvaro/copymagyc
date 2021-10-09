@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\StationeryType;
+use App\Models\RawMaterial;
 
-class StationeryTypeSeeder extends Seeder
+class RawMaterialSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class StationeryTypeSeeder extends Seeder
     public function run()
     {
         //
-        StationeryType::factory()->count(15)->create();
+        RawMaterial::factory()->count(15)->create();
     }
 }

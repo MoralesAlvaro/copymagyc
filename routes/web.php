@@ -35,7 +35,7 @@ Route::group([
     Route::resource('supplier', SupplierController::class)->middleware(['auth']);
     Route::resource('customers', CustomerController::class)->middleware(['auth']);
     Route::resource('parameter', ParameterController::class)->middleware(['auth']);
-    Route::resource('raw_materials', RawMaterialsController::class)->middleware(['auth']);
+    Route::resource('rawMaterials', RawMaterialsController::class)->middleware(['auth']);
 
 });
 

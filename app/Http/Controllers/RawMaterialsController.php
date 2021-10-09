@@ -14,7 +14,7 @@ class RawMaterialsController extends Controller
      */
     public function index()
     {        
-        $slug = 'raw_materials';
+        $slug = 'rawMaterials';
         $encabezados= ['ID', 'Codigo', 'Nombre', 'Fecha', 'Cantidad', 'Comentarios'];
         $campos= ['id', 'code', 'name', 'buy_date', 'amount', 'commetn'];
         $data = RawMaterials::orderBy('id', 'DESC')->paginate();
@@ -29,7 +29,7 @@ class RawMaterialsController extends Controller
     public function create()
     {
         //
-        $slug = 'raw_materials';
+        $slug = 'rawMaterials';
         return view('raw_materials.create', compact('slug'));
     }
 
