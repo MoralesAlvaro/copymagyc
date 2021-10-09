@@ -15,15 +15,15 @@ class CreateSuppliersTable extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 100);
+            $table->string('name', 100)->unique();
             $table->string('address', 150);
-            $table->string('nrc', 7);
-            $table->string('nit', 17);
+            $table->string('nrc', 7)->unique();
+            $table->string('nit', 17)->unique();
             $table->string('company_type', 7);
             $table->string('business');
-            $table->string('telephone', 8);
-            $table->string('email', 50);
-            $table->string('dui', 10);
+            $table->string('telephone', 8)->unique();
+            $table->string('email', 50)->unique();
+            $table->string('dui', 10)->unique();
             $table->boolean('active')->nullable()->default(false);
             $table->softDeletes();
             $table->timestamps();

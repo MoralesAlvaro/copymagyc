@@ -103,16 +103,16 @@ class SupplierController extends Controller
             
             // Validando data
             $request->validate([
-                'name' => 'required','string','max:255','unique:suppliers'.$supplier->name,
-                'address' => 'required','string','max:255',
-                'nrc' => 'required','numeric','max:7','unique:suppliers',
-                'nit' => 'required','numeric','max:17','unique:suppliers',
-                'company_type' => 'required','string','max:7',
-                'business' => 'required','string','max:255',
-                'telephone' => 'required','numeric','max:8','unique:suppliers',
-                'email' => 'required','email','max:50','unique:suppliers',
-                'dui' => 'required','numeric','max:9','unique:suppliers',
-                'active' => 'required','boolean',
+                'name' => 'required|string|max:255|unique:suppliers,name,'.$supplier->id,
+                'address' => 'required|string|max:255',
+                'nrc' => 'required|numeric|min:7|unique:suppliers,nrc,'.$supplier->id,
+                'nit' => 'required|numeric|min:17|unique:suppliers',
+                'company_type' => 'required|string|max:7',
+                'business' => 'required|string|max:255',
+                'telephone' => 'required|numeric|min:8|unique:suppliers,telephone,'.$supplier->id,
+                'email' => 'required|email|max:50|unique:suppliers,email,'.$supplier->id,
+                'dui' => 'required|numeric|min:9|unique:suppliers,dui,'.$supplier->id,
+                'active' => 'required|boolean',
             ]);
 
             // Verificando si ha habido modificaciones
