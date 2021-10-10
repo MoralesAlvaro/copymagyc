@@ -22,7 +22,7 @@
             <div class="m-3 py-2">
                 <x-btn nameBtn="Regresar" :slug="$slug.'.index'"></x-btn>
             </div>
-            <x-form-container nameForm="Registrar Materia Prima" :slug="$slug">
+            <x-form-container nameForm="Editar Materia Prima/Producto" :slug="$slug">
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form method="POST" action="{{ route($slug.'.update', $data->id) }}" enctype="multipart/form-data">
@@ -58,9 +58,9 @@
                             {{-- buy_date --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="buy_date">Fecha</label>
+                                    <label for="buy_date">Fecha de compra</label>
                                     <input type="date" name="buy_date" class="form-control" id="buy_date"
-                                        placeholder="fecha de compra" value="{{$data->buy_date}}">
+                                        value="{{$data->buy_date}}" placeholder="">
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="buy_date" />
                             </div>
