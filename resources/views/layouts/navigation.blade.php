@@ -68,6 +68,8 @@
                     <ul class="nav nav-treeview">
                         <x-link-group link="{{ route('rawMaterials.index') }}" nameLink="Materia Prima"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
+                        <x-link-group link="{{ route('stationeryTypes.index') }}" nameLink="Tipo de Materia Prima"><i
+                                class="fas fa-vote-yea"></i></x-link-group>
                     </ul>
                 </li>
                 <li class="nav-item">

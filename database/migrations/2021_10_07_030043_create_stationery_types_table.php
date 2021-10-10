@@ -16,8 +16,8 @@ class CreateStationeryTypesTable extends Migration
         Schema::create('stationery_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100)->unique();
-            $table->string('color', 100);
-            $table->string('size', 100);
+            $table->string('color', 100)->nullable();
+            $table->string('size', 100)->nullable();
             $table->string('material', 100);
             $table->softDeletes();
             $table->timestamps();

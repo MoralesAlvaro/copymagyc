@@ -100,7 +100,7 @@
                                 {{-- is_admin --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="is_admin">Tipo usuario</label>
+                                        <label for="is_admin">Estado</label>
                                         <select name="is_admin" class="form-control select2" style="width: 100%;">
                                             <option value="0">Empleado</option>
                                             <option value="1">Administrador</option>

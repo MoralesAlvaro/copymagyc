@@ -98,7 +98,7 @@
                             {{-- Active --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="active">Tipo usuario</label>
+                                    <label for="active">Estado</label>
                                     <select name="active" class="form-control select2" style="width: 100%;">
                                         @if ($data->active == 1)
                                         <option value="1">Activo</option>

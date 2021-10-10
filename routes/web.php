@@ -5,8 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RawMaterialController;
-
-
+use App\Http\Controllers\StationeryTypeController;
 
 
 /*
@@ -36,6 +35,7 @@ Route::group([
     Route::resource('customers', CustomerController::class)->middleware(['auth']);
     Route::resource('parameter', ParameterController::class)->middleware(['auth']);
     Route::resource('rawMaterials', RawMaterialController::class)->middleware(['auth']);
+    Route::resource('stationeryTypes', StationeryTypeController::class)->middleware(['auth']);
 
 });
 
