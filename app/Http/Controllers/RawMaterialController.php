@@ -17,7 +17,7 @@ class RawMaterialController extends Controller
     public function index()
     {        
         $slug = 'rawMaterials';
-        $encabezados= ['ID', 'Codigo', 'Nombre', 'Fecha', 'Cantidad', 'Comentarios'];
+        $encabezados= ['ID', 'Código', 'Nombre', 'Fecha', 'Cantidad', 'Comentarios'];
         $campos= ['id', 'code', 'name', 'buy_date', 'amount', 'comment'];
         $data = RawMaterial::orderBy('id', 'DESC')->paginate();
         return view('raw_materials.index', compact('slug','encabezados', 'campos', 'data'));

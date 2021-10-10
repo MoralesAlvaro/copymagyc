@@ -57,14 +57,14 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <x-group-link nameGroup="Modulo Clientes"><i class="fas fa-vote-yea"></i></x-group-link>
+                    <x-group-link nameGroup="Módulo Clientes"><i class="fas fa-vote-yea"></i></x-group-link>
                     <ul class="nav nav-treeview">
                         <x-link-group link="{{ route('customers.index') }}" nameLink="Clientes"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <x-group-link nameGroup="Modulo Materia Prima"><i class="fas fa-store-alt"></i></x-group-link>
+                    <x-group-link nameGroup="Módulo Materia Prima"><i class="fas fa-store-alt"></i></x-group-link>
                     <ul class="nav nav-treeview">
                         <x-link-group link="{{ route('rawMaterials.index') }}" nameLink="Materia Prima"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
@@ -73,7 +73,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <x-group-link nameGroup="Modulo Reportes"><i class="fas fa-file-medical-alt"></i></x-group-link>
+                    <x-group-link nameGroup="Módulo Reportes"><i class="fas fa-file-medical-alt"></i></x-group-link>
                     <ul class="nav nav-treeview">
                         <x-link-group link="{{ route('dashboard') }}" nameLink="Resporte Semanal"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
@@ -82,14 +82,14 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <x-group-link nameGroup="Modulo Proveedores"><i class="fas fa-cart-arrow-down"></i></x-group-link>
+                    <x-group-link nameGroup="Módulo Proveedores"><i class="fas fa-cart-arrow-down"></i></x-group-link>
                     <ul class="nav nav-treeview">
                         <x-link-group link="{{ route('supplier.index') }}" nameLink="Proveedores"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <x-group-link nameGroup="Modulo Usuarios"><i class="fas fa-users"></i></x-group-link>
+                    <x-group-link nameGroup="Módulo Usuarios"><i class="fas fa-users"></i></x-group-link>
                     <ul class="nav nav-treeview">
                         <x-link-group link="{{ route('user.index') }}" nameLink="Usuarios"><i
                                 class="fas fa-vote-yea"></i></x-link-group>

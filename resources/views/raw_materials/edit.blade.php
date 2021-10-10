@@ -38,9 +38,9 @@
                             {{-- code --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="code">Codigo</label>
+                                    <label for="code">Código</label>
                                     <input type="text" name="code" class="form-control" id="code"
-                                        placeholder="Codigo de materia prima" value="{{$data->code}}">
+                                        placeholder="Código de materia prima" value="{{$data->code}}">
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="code" />
                             </div>
@@ -98,7 +98,7 @@
                                 {{-- stationeryTypes --}}
                                 <div class="">
                                     <div class="form-group">
-                                        <label for="stationery_type_id">Typo Papeleria</label>
+                                        <label for="stationery_type_id">Tipo Papelería</label>
                                         <select name="stationery_type_id" class="form-control select2"
                                             style="width: 100%;" id="stationery_type_id" required placeholder=" tipo" value="{{$data->stationery_type_id}}">
                                             @foreach($stationeryTypes as $item)

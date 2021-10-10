@@ -22,7 +22,7 @@
       <div class="m-3 py-2">
         <x-btn nameBtn="Regresar" :slug="$slug.'.index'"></x-btn>
       </div>
-      <x-form-container nameForm="Registrar Cliente">
+      <x-form-container nameForm="Editar Cliente">
         <!-- /.card-header -->
         <!-- form start -->
         <form method="POST" action="{{ route($slug . '.update', $data->id) }}">
@@ -105,7 +105,7 @@
                 {{-- Active --}}
                 <div class="col-md-6">
                   <div class="form-group">
-                      <label for="active">Tipo usuario</label>
+                      <label for="active">Activo</label>
                       <select name="active" class="form-control select2" style="width: 100%;">
                         @if ($data->active == 1)
                             <option value="1">Activo</option>

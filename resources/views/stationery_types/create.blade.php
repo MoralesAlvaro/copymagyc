@@ -54,11 +54,12 @@
                             {{-- material --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="material">Typo Papeleria</label>
+                                    <label for="material">Tipo Papelería</label>
                                     <select name="material" class="form-control select2" style="width: 100%;"
                                         id="material" required placeholder=" tipo">
                                         <option value="Papeliería">Papeliería</option>
                                         <option value="Promocionales">Promocionales</option>
+                                        <option value="Otros">Otros</option>
                                     </select>
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="material" />
