@@ -33,9 +33,9 @@
 
                     <div class="col-6 text-justify">
                         
-                        <x-p-card :result="$data->supplier_id" nameLabel="Proveedor" icono="fas fa-building" />
-                        <x-p-card :result="$data->stationery_type_id" nameLabel="Tipo" icono="fas fa-building" />
-                        <x-p-card :result="$data->user_id" nameLabel="Registrado por" icono="fas fa-user" />
+                        <x-p-card :result="$data->supplier->name" nameLabel="Proveedor" icono="fas fa-building" />
+                        <x-p-card :result="$data->stationeryType->name" nameLabel="Tipo" icono="fas fa-building" />
+                        <x-p-card :result="$data->user->name.' '.$data->user->surname " nameLabel="Registrado por" icono="fas fa-user" />
                         <x-p-card :result="$data->comment" nameLabel="Comentario" icono="fas fa-align-justify" />
                         <div>
                             <a style="margin: 19px;" href="{{ route($slug . '.edit', $data->id) }}"

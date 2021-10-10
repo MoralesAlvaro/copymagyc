@@ -48,7 +48,7 @@ class RawMaterialController extends Controller
         $request->validate([
             'code' => ['required', 'string', 'max:255', 'unique:raw_materials'],
             'name' => ['required', 'string', 'max:255'],
-            'buy_date' => ['required', 'date'],
+            'buy_date' => ['nullable', 'date'],
             'amount' => ['required', 'integer'],
             'comment' => ['nullable', 'string', 'max:255'],
             'user_id' => ['integer'],
@@ -86,9 +86,11 @@ class RawMaterialController extends Controller
     public function edit($id)
     {
         //
+        $suppliers = Supplier::all();
+        $stationeryTypes = StationeryType::all();
         $slug = 'rawMaterials';
         $data = RawMaterial::findOrFail($id);
-        return view('raw_materials.edit', compact('slug', 'data'));  
+        return view('raw_materials.edit', compact('slug', 'data', 'suppliers', 'stationeryTypes'));  
     }
 
     /**
@@ -105,29 +107,28 @@ class RawMaterialController extends Controller
         if ($rawMaterials) {
             
             // Validando data
+
             $request->validate([
-                'name' => 'required|string|max:255|unique:suppliers,name,'.$rawMaterials->id,
-                'address' => 'required|string|max:255',
-                'nrc' => 'required|numeric|min:7|unique:suppliers,nrc,'.$rawMaterials->id,
-                'nit' => 'required|numeric|min:17|unique:suppliers,nit,'.$rawMaterials->id,
-                'company_type' => 'required|string|max:7',
-                'business' => 'required|string|max:255',
-                'telephone' => 'required|numeric|min:8|unique:suppliers,telephone,'.$rawMaterials->id,
-                'email' => 'required|email|max:50|unique:suppliers,email,'.$rawMaterials->id,
-                'dui' => 'required|numeric|min:9|unique:suppliers,dui,'.$rawMaterials->id,
-                'active' => 'required|boolean',
+                'code' => ['required', 'string', 'max:255', 'unique:raw_materials,code,'.$rawMaterials->id],
+                'name' => ['required', 'string', 'max:255'],
+                'buy_date' => ['nullable', 'date'],
+                'amount' => ['required', 'integer'],
+                'comment' => ['nullable', 'string', 'max:255'],
+                'user_id' => ['integer'],
+                'supplier_id' => ['required', 'integer', 'max:2'],
+                'stationery_type_id' => ['required', 'integer', 'max:2'],
             ]);
 
             // Verificando si ha habido modificaciones
-            $campos = ['name', 'address', 'nrc', 'nit', 'company_type', 'business', 'telephone', 'email', 'dui', 'active'];
+            $campos = ['code', 'name', 'buy_date', 'amount', 'comment', 'user_id', 'supplier_id', 'stationery_type_id'];
             foreach ($campos as $item) {
                 // Valor traido de la bd
-                $valor_campo_old = $supplier->$item;
+                $valor_campo_old = $rawMaterials->$item;
                 // Valor traido del formulario
                 $valor_campo_new = $request->get($item);
                 if ($valor_campo_new != $valor_campo_old) {
                     // Actualizando campo
-                    $supplier->fill([$item => $valor_campo_new])->save();
+                    $rawMaterials->fill([$item => $valor_campo_new])->save();
                 }
             }
 
