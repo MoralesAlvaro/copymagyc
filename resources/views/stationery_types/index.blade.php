@@ -32,7 +32,7 @@
             <div class="col-md-12">
                 <div class="card card-purple">
                     <div class="card-header">
-                        <h3 class="card-title">Materia Prima</h3>
+                        <h3 class="card-title">Tipo de Materia Prima</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

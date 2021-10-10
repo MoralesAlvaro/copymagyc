@@ -25,18 +25,14 @@
                 </div>
                 <x-card :result="$data->name.' '.$data->name">
                     <div class="col-6 text-justify">
-                            <x-p-card :result="$data->code" nameLabel="Código" icono="fas fa-barcode" />
-                            <x-p-card :result="$data->name" nameLabel="Nombre" icono="fas fa-barcode" />
-                            <x-p-card :result="$data->buy_date" nameLabel="Fecha de Compra" icono="fas fa-calendar-alt" />
-                            <x-p-card :result="$data->amount" nameLabel="Cantidad" icono="fas fa-cart-plus" />
+                            <x-p-card :result="$data->name" nameLabel="Nombre" icono="fas fa-heading" />
+                            <x-p-card :result="$data->color" nameLabel="Color" icono="fas fa-palette" />
                     </div>
 
                     <div class="col-6 text-justify">
                         
-                        <x-p-card :result="$data->supplier->name" nameLabel="Proveedor" icono="fas fa-building" />
-                        <x-p-card :result="$data->stationeryType->name" nameLabel="Tipo" icono="fas fa-building" />
-                        <x-p-card :result="$data->user->name.' '.$data->user->surname " nameLabel="Registrado por" icono="fas fa-user" />
-                        <x-p-card :result="$data->comment" nameLabel="Comentario" icono="fas fa-align-justify" />
+                        <x-p-card :result="$data->size" nameLabel="Tamaño" icono="fas fa-ruler" />
+                        <x-p-card :result="$data->material" nameLabel="Material" icono="fas fa-weight-hanging" />
                         <div>
                             <a style="margin: 19px;" href="{{ route($slug . '.edit', $data->id) }}"
                                 class="btn btn-sm btn-primary sombra_boton">Editar</a>

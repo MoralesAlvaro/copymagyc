@@ -29,15 +29,12 @@
                             <x-p-card :result="$data->address" nameLabel="Direccion" icono="fas fa-map-marker-alt" />
                             <x-p-card :result="$data->nrc" nameLabel="nrc" icono="fas fa-address-card" />
                             <x-p-card :result="$data->nit" nameLabel="nit" icono="fas fa-address-card" />
-                            <x-p-card :result="$data->company_type" nameLabel="tipo de Compañia" icono="fas fa-building" />
                     </div>
 
                     <div class="col-6 text-justify">
+                        <x-p-card :result="$data->company_type" nameLabel="tipo de Compañia" icono="fas fa-building" />
                         
                         <x-p-card :result="$data->business" nameLabel="Giro" icono="fas fa-building" />
-                        <x-p-card :result="$data->telephone" nameLabel="Télefono" icono="fas fa-phone-square" />
-                        <x-p-card :result="$data->email" nameLabel="Correo" icono="fas fa-envelope" />
-                        <x-p-card :result="$data->dui" nameLabel="dui" icono="fas fa-address-card" />
 
                         <x-p-card :result="$data->active == 1 ? 'Activo' : 'Inactivo' " nameLabel="Estado"
                             icono="fas fa-toggle-on" />

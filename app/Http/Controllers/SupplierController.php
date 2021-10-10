@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Supplier;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Hash;
 
 class SupplierController extends Controller
 {
@@ -44,19 +42,24 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
          $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'unique:suppliers'],
             'address' => ['required', 'string', 'max:255'],
-            'nrc' => ['required', 'string', 'max:255'],
-            'nit' => ['required', 'string', 'max:255'],
-            'company_type' => ['required', 'string', 'max:255'],
+            'nrc' => ['required', 'numeric', 'min:7', 'unique:suppliers'],
+            'nit' => ['required', 'numeric', 'min:17', 'unique:suppliers'],
+            'company_type' => ['required', 'string', 'max:7'],
             'business' => ['required', 'string', 'max:255'],
-            'telephone' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'max:255'],
-            'dui' => ['required', 'string', 'max:255'],
+            'telephone' => ['required', 'numeric', 'min:8', 'unique:suppliers'],
+            'email' => ['required', 'email', 'max:50', 'unique:suppliers'],
+            'dui' => ['required', 'numeric', 'min:9', 'unique:suppliers'],
             'active' => 'required|boolean',
-             ]);
+        ]);
+
+        $supplier = new Supplier($request->all());
+        $supplier->save();
+
+        return redirect()->back()->with('success', 'El Proveedor se ha registrado correctamente!.');
     
-        }
+    }
 
     /**
      * Display the specified resource.
@@ -82,7 +85,8 @@ class SupplierController extends Controller
           
         $slug = 'supplier';
         $data = Supplier::findOrFail($id);
-        return view('supplier.edit', compact('slug', 'data'));    }
+        return view('supplier.edit', compact('slug', 'data'));    
+    }
 
     /**
      * Update the specified resource in storage.
@@ -91,9 +95,41 @@ class SupplierController extends Controller
      * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(Request $request, $id)
     {
         //
+        $supplier = Supplier::findOrFail($id);
+        if ($supplier) {
+            
+            // Validando data
+            $request->validate([
+                'name' => 'required|string|max:255|unique:suppliers,name,'.$supplier->id,
+                'address' => 'required|string|max:255',
+                'nrc' => 'required|numeric|min:7|unique:suppliers,nrc,'.$supplier->id,
+                'nit' => 'required|numeric|min:17|unique:suppliers,nit,'.$supplier->id,
+                'company_type' => 'required|string|max:7',
+                'business' => 'required|string|max:255',
+                'telephone' => 'required|numeric|min:8|unique:suppliers,telephone,'.$supplier->id,
+                'email' => 'required|email|max:50|unique:suppliers,email,'.$supplier->id,
+                'dui' => 'required|numeric|min:9|unique:suppliers,dui,'.$supplier->id,
+                'active' => 'required|boolean',
+            ]);
+
+            // Verificando si ha habido modificaciones
+            $campos = ['name', 'address', 'nrc', 'nit', 'company_type', 'business', 'telephone', 'email', 'dui', 'active'];
+            foreach ($campos as $item) {
+                // Valor traido de la bd
+                $valor_campo_old = $supplier->$item;
+                // Valor traido del formulario
+                $valor_campo_new = $request->get($item);
+                if ($valor_campo_new != $valor_campo_old) {
+                    // Actualizando campo
+                    $supplier->fill([$item => $valor_campo_new])->save();
+                }
+            }
+
+            return redirect('/supplier'.'/'.$id)->with('success', 'El Proveedor se ha sido actualizado correctamente!.');      
+        }
     }
 
     /**
@@ -102,8 +138,14 @@ class SupplierController extends Controller
      * @param  \App\Models\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Supplier $supplier)
+    public function destroy($id)
     {
-        //
+        $data = Supplier::find($id);
+        if ($data == null) {
+            return redirect('/supplier')->with('success', 'El registro que desea eliminar no se encuentra!.');
+        }
+        
+        $data->delete();
+        return redirect('/supplier')->with('success', 'El registro se ha sido eliminado correctamente!.');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSuppliersTable extends Migration
+class CreateCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,20 @@ class CreateSuppliersTable extends Migration
      */
     public function up()
     {
-        Schema::create('suppliers', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 100)->unique();
-            $table->string('address', 150);
+            $table->string('address', 150)->nullable();
             $table->string('nrc', 7)->unique();
             $table->string('nit', 17)->unique();
-            $table->string('company_type', 7);
-            $table->string('business');
-            $table->string('telephone', 8)->unique();
-            $table->string('email', 50)->unique();
-            $table->string('dui', 10)->unique();
+            $table->string('company_type', 7)->nullable();
+            $table->string('business')->nullable();
             $table->boolean('active')->nullable()->default(false);
+            $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -37,6 +37,6 @@ class CreateSuppliersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suppliers');
+        Schema::dropIfExists('customers');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class raw_materials extends Model
+class RawMaterials extends Model
 {
     use HasFactory;
 
