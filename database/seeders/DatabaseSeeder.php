@@ -18,10 +18,19 @@ class DatabaseSeeder extends Seeder
         // Reseteando tablas
         $this->truncateTables([
             'users',
+            'suppliers',
+            'customers',
+            'stationery_types',
+            'raw_materials',
         ]);
 
         // Sembrando
         $this->call(UserSeeder::class);
+        $this->call(SupplierSeeder::class);
+        $this->call(CustomerSeeder::class);
+        $this->call(StationeryTypeSeeder::class);
+        $this->call(RawMaterialSeeder::class);
+        
 
     }
 
