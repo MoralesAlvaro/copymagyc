@@ -6,16 +6,17 @@
     <div class="row">
       <div class="col-sm-12 mt-5 mb-5">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-indicators">
+         <!-- <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 3"></button>
           </div>
+        -->
           <div class="carousel-inner">
-            @for ($i = 1; $i <= 4; $i++)
+            @for ($i = 1; $i <= 10; $i++)
               <div class="{{$i === 1 ? 'carousel-item active' : 'carousel-item' }}">
-                <img src="{{url('img/carousel/image-'.$i.'.jpg')}}" class="d-block w-100" alt="..." width="660px" height="250px" style="object-fit: cover">
+                <img src="{{url('img/carousel/imag-'.$i.'.jpg')}}" class="d-block w-100" alt="..." width="660px" height="450px" style="object-fit:scale-down;">
               </div>
             @endfor
         </div>
@@ -30,7 +31,7 @@
       </div>
     </div>
   </div>
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque, eligendi eaque fugit error iure, debitis cupiditate sint quia adipisci et aliquam velit. Iste repudiandae consectetur est similique vitae, nam velit.
+  sdLorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque, eligendi eaque fugit error iure, debitis cupiditate sint quia adipisci et aliquam velit. Iste repudiandae consectetur est similique vitae, nam velit.
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem iure tempora minus autem ducimus aspernatur! Quas sequi, odit nostrum tempora quos iste unde architecto consectetur possimus eaque. Ipsa, reiciendis laudantium.
 
   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga sapiente id eum dolor fugit neque aut. Similique voluptatem, labore impedit assumenda, atque exercitationem ab ullam alias consequuntur voluptas porro suscipit.
