@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'moralesalvaro308@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('12345678'),
-            'avatar' => null,
+            'avatar' => url('img/avatar.png'),
             'is_admin' => true,
             'active' => true,
             'created_at' => now(),

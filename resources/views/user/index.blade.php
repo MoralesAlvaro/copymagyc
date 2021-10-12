@@ -54,7 +54,7 @@
                                     <td>{{$datos->$campo}}</td>
                                     @endforeach
                                     <td>
-                                        <a href="{{ route($slug.'.show',$datos->id)}}"
+                                        <a href="{{Auth::user()->name}}"
                                             class="btn btn-sm btn-success">Ver</a>
                                     </td>
                                     <td>

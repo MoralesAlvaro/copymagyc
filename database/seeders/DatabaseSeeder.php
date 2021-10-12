@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'customers',
             'stationery_types',
             'raw_materials',
+            'parameters',
         ]);
 
         // Sembrando
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CustomerSeeder::class);
         $this->call(StationeryTypeSeeder::class);
         $this->call(RawMaterialSeeder::class);
+        $this->call(ParameterSeeder::class);
         
 
     }

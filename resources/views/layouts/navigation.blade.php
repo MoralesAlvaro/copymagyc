@@ -24,18 +24,18 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <style>
-        .user {
-            height: 40px;
-            width: 40px;
-        }
+            .user {
+                height: 40px;
+                width: 40px;
+            }
         </style>
         <!-- Sidebar user panel (optional) -->
         <div class="mt-3 pb-3 mb-3 d-flex">
             <div class="image" data-toggle="dropdown">
-                <img src="{{url('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2 user" alt="User Image">
+                <img src="{{Auth::user()->avatar}}" class="img-circle elevation-2 user" alt="User Image">
             </div>
             <div class="dropdown-menu elevado max-w-x-small" role="menu">
-                <a class="dropdown-item text-primary" href="#">Perfil</a>
+                <a class="dropdown-item text-primary" href="{{ route('user.show',Auth::user()->id)}}">Perfil</a>
                 <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
                     {{ __('Cerrar Sesión') }}
@@ -93,6 +93,16 @@
                     <ul class="nav nav-treeview">
                         <x-link-group link="{{ route('user.index') }}" nameLink="Usuarios"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <x-group-link nameGroup="Parametros"><i class="fas fa-sliders-h"></i></x-group-link>
+                    <ul class="nav nav-treeview">
+                        <x-link-group link="{{ route('parameter.show') }}" nameLink="Parametros"><i
+                                class="fas fa-cog"></i></x-link-group>
+
+                        <x-link-group link="{{ route('parameter.edit') }}" nameLink="Editar Parametros"><i
+                                class="fas fa-cog"></i></x-link-group>
                     </ul>
                 </li>
             </ul>

@@ -33,10 +33,11 @@ Route::group([
     Route::resource('user', UserController::class)->middleware(['auth']);
     Route::resource('supplier', SupplierController::class)->middleware(['auth']);
     Route::resource('customers', CustomerController::class)->middleware(['auth']);
-    Route::resource('parameter', ParameterController::class)->middleware(['auth']);
     Route::resource('rawMaterials', RawMaterialController::class)->middleware(['auth']);
     Route::resource('stationeryTypes', StationeryTypeController::class)->middleware(['auth']);
-
+    Route::get('parameter/edit', [ParameterController::class, 'edit'])->middleware(['auth'])->name('parameter.edit');
+    Route::get('parameter/update', [ParameterController::class, 'update'])->middleware(['auth'])->name('parameter.update');
+    Route::get('parameter/show', [ParameterController::class, 'show'])->middleware(['auth'])->name('parameter.show');
 });
 
 require __DIR__.'/auth.php';
