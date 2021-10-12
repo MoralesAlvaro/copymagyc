@@ -21,6 +21,7 @@
     <div class="container-fluid">
       <x-form-container nameForm="Registro de Parametros">
         <form method="POST" action="{{ route('parameter.update') }}" enctype="multipart/form-data">
+          @method('PATCH') 
           @csrf
 
           <div class="card-body">
