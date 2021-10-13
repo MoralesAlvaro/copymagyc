@@ -6,6 +6,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RawMaterialController;
 use App\Http\Controllers\StationeryTypeController;
+use App\Http\Controllers\AtivityRawController;
 
 
 /*
@@ -38,6 +39,9 @@ Route::group([
     Route::get('parameter/edit', [ParameterController::class, 'edit'])->middleware(['auth'])->name('parameter.edit');
     Route::PATCH('parameter/update', [ParameterController::class, 'update'])->middleware(['auth'])->name('parameter.update');
     Route::get('parameter/show', [ParameterController::class, 'show'])->middleware(['auth'])->name('parameter.show');
+    
+    // Reportes
+    Route::resource('attivity_raw', AtivityRawController::class)->middleware(['auth']);
 });
 
 require __DIR__.'/auth.php';
