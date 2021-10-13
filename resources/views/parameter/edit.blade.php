@@ -21,7 +21,7 @@
     <div class="container-fluid">
       <x-form-container nameForm="Registro de Parametros">
         <form method="POST" action="{{ route('parameter.update') }}" enctype="multipart/form-data">
-          @method('PATCH') 
+          @method('PATCH')
           @csrf
 
           <div class="card-body">
@@ -40,8 +40,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="representative_nit">NIT Representante</label>
-                  <input type="text" name="representative_nit" class="form-control" id="representative_nit"
-                    placeholder="NIT de la empresa" value="{{$data[0]->representative_nit}}">
+                  <input type="number" name="representative_nit" class="form-control" id="representative_nit"
+                    placeholder="NIT de la empresa" maxlength="17" pattern="^[0-9]+" min="1" step="1" value="{{$data[0]->representative_nit}}">
                 </div>
                 <x-auth-validation-errors class="" :errors="$errors" campo="representative_nit" />
               </div>
@@ -78,8 +78,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="telephone">Télefono</label>
-                  <input type="text" name="telephone" class="form-control" id="telephone" placeholder="Télefono"
-                    value="{{$data[0]->telephone}}">
+                  <input type="number" name="telephone" class="form-control" id="telephone" placeholder="Télefono" maxlength="8" pattern="^[0-9]+" min="1" step="1"  value="{{$data[0]->telephone}}">
                 </div>
                 <x-auth-validation-errors class="" :errors="$errors" campo="telephone" />
               </div>
@@ -98,8 +97,8 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="company_nit">NIT de la mepresa</label>
-                  <input type="text" name="company_nit" class="form-control" id="company_nit"
-                    placeholder="NIT de la mepresa" value="{{$data[0]->company_nit}}">
+                  <input type="number" name="company_nit" class="form-control" id="company_nit"
+                    placeholder="NIT de la mepresa" maxlength="17" pattern="^[0-9]+" min="1" step="1"  value="{{$data[0]->company_nit}}">
                 </div>
                 <x-auth-validation-errors class="" :errors="$errors" campo="company_nit" />
               </div>
@@ -128,21 +127,36 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="nrc">NRC</label>
-                  <input type="nrc" name="nrc" class="form-control" id="nrc" placeholder="NRC"
-                    value="{{$data[0]->nrc}}">
+                  <input type="number" name="nrc" class="form-control" id="nrc" placeholder="NRC"
+                  maxlength="17" pattern="^[0-9]+" min="1" step="1"  value="{{$data[0]->nrc}}">
                 </div>
                 <x-auth-validation-errors class="" :errors="$errors" campo="nrc" />
               </div>
 
-
-              {{-- Company Type--}}
+              {{-- company-type --}}
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="company_type">Tipo de compañia</label>
-                  <input type="text" name="company_type" class="form-control" id="company_type"
-                    placeholder="Tipo de Compañia" value="{{$data[0]->company_type}}">
+                  <label for="company-type">Tipo de compañia </label>
+                  <select name="company_type" class="form-control select2" style="width: 100%;" id="company-type"
+                    value="{{ $data[0]->company_type }}" placeholder="">
+                    @if ($data[0]->company_type == 'Pequeña')
+                    <option value="Pequeña">Pequeña</option>
+                    <option value="Mediana">Mediana</option>
+                    <option value="Grande">Grande</option>
+                    @endif
+                    @if ($data[0]->company_type == 'Mediana')
+                    <option value="Mediana">Mediana</option>
+                    <option value="Pequeña">Pequeña</option>
+                    <option value="Grande">Grande</option>
+                    @endif
+                    @if ($data[0]->company_type == 'Grande')
+                    <option value="Grande">Grande</option>
+                    <option value="Mediana">Mediana</option>
+                    <option value="Pequeña">Pequeña</option>
+                    @endif
+                  </select>
+                  <x-auth-validation-errors class="" :errors=" $errors" campo="company-type" />
                 </div>
-                <x-auth-validation-errors class="" :errors="$errors" campo="company_type" />
               </div>
 
             </div>

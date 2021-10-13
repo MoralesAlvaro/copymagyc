@@ -75,7 +75,7 @@
                                 {{-- company-type --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="company-type">tipo de compañia </label>
+                                        <label for="company-type">Tipo de compañia </label>
                                         <select name="company_type" class="form-control select2" style="width: 100%;"
                                             id="company-type" value="{{ $data->company_type }}" placeholder="">
                                             @if ($data->company_type == 'Pequeña')

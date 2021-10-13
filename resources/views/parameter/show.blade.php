@@ -42,9 +42,10 @@
                     <x-p-card :result="$data[0]->telephone" nameLabel="Telefono" icono="fas fa-building" />
                     <x-p-card :result="$data[0]->email" nameLabel="Correo Electrónico" icono="fas fa-building" />
                     <x-p-card :result="$data[0]->address" nameLabel="Dirección" icono="fas fa-building" />
-                    <x-p-card :result="$data[0]->conpany_nit" nameLabel="NIT de la Empresa" icono="fas fa-building" />
+                    <x-p-card :result="$data[0]->company_nit" nameLabel="NIT de la Empresa" icono="fas fa-building" />
                     <x-p-card :result="$data[0]->representative_nit" nameLabel="NIT del Representante" icono="fas fa-building" />
                     <x-p-card :result="$data[0]->company_type" nameLabel="Tipo de Compañia" icono="fas fa-building" />
+                    <x-p-card :result="$data[0]->nrc" nameLabel="NRC de la Compañia" icono="fas fa-building" />
 
                     <a style="margin: 19px;" href="{{ route($slug . '.edit') }}"
                         class="btn btn-sm btn-primary sombra_boton">Editar</a>

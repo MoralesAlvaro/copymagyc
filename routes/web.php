@@ -36,7 +36,7 @@ Route::group([
     Route::resource('rawMaterials', RawMaterialController::class)->middleware(['auth']);
     Route::resource('stationeryTypes', StationeryTypeController::class)->middleware(['auth']);
     Route::get('parameter/edit', [ParameterController::class, 'edit'])->middleware(['auth'])->name('parameter.edit');
-    Route::get('parameter/update', [ParameterController::class, 'update'])->middleware(['auth'])->name('parameter.update');
+    Route::PATCH('parameter/update', [ParameterController::class, 'update'])->middleware(['auth'])->name('parameter.update');
     Route::get('parameter/show', [ParameterController::class, 'show'])->middleware(['auth'])->name('parameter.show');
 });
 
