@@ -41,7 +41,10 @@ Route::group([
     Route::get('parameter/show', [ParameterController::class, 'show'])->middleware(['auth'])->name('parameter.show');
     
     // Reportes
-    Route::resource('attivity_raw', AtivityRawController::class)->middleware(['auth']);
+    Route::resource('activity_raw', AtivityRawController::class)->middleware(['auth']);
+    Route::post('activity_raw/weekly/{id}', [AtivityRawController::class, 'weekly'])->middleware(['auth'])->name('activity_raw.weekly');
+    Route::post('activity_raw/store/{id}', [AtivityRawController::class, 'store'])->middleware(['auth'])->name('activity_raw.store');
+    Route::post('activity_raw/update/{id}', [AtivityRawController::class, 'update'])->middleware(['auth'])->name('activity_raw.update');
 });
 
 require __DIR__.'/auth.php';

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="content-wrapper pt-3">
+<div class="content-wrapper pt-1 pb-0">
 
     {{-- Notification --}}
     <div class="container">
@@ -17,7 +17,20 @@
                     </button>
                 </div>
             </div>
-        </div >
+        </div>
+        @endif
+
+        @if (session('warning'))
+        <div class="mx-1 ml-8">
+            <div class="card-body">
+                <div class="alert alert-warning text-center msg alert-dismissible fade show" id="success" role="alert">
+                    <strong>{{ session('warning') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
         @endif
         <!-- EDN Mensaje de confirmación -->
     </div>
@@ -42,9 +55,8 @@
                                     @foreach($encabezados as $key)
                                     <th>{{$key}}</th>
                                     @endforeach
-                                    <th>Ver</th>
-                                    <th>Editar</th>
-                                    <th>Eliminar</th>
+                                    <th>Gestión</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -54,14 +66,21 @@
                                     <td>{{$datos->$campo}}</td>
                                     @endforeach
                                     <td>
+                                        <!-- Sacar meteria prima -->
+                                        <button type="submit" class="btn btn-sm btn-secondary" data-toggle="modal"
+                                            data-target="#mas-{{$datos->code}}">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                        <button type="submit" class="btn btn-sm btn-warning" data-toggle="modal"
+                                            data-target="#menos-{{$datos->code}}">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </td>
+                                    <td>
                                         <a href="{{ route($slug.'.show',$datos->id)}}"
                                             class="btn btn-sm btn-success">Ver</a>
-                                    </td>
-                                    <td>
                                         <a href="{{ route($slug.'.edit',$datos->id)}}"
                                             class="btn btn-sm btn-primary">Editar</a>
-                                    </td>
-                                    <td>
                                         <!-- Eliinar el registro a travez del modal que está más abajo -->
                                         <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal"
                                             data-target="#modal-{{$datos->id}}">
@@ -104,6 +123,85 @@
                                 </div>
                                 <!-- End Modal Eliminar-->
 
+                                <!-- Modal Sacar-->
+                                <div class="modal fade" id="menos-{{$datos->code}}" tabindex="-1" role="dialog"
+                                    aria-labelledby="modalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <form id="form_eliminar"
+                                            action="{{ route('activity_raw'.'.store', $datos->id) }}" method="post">
+                                            @csrf
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-purple">
+                                                    <p class="text-center">Sacar Materia Prima<i
+                                                            class="fa fa-commenting-o fa-4x"></i></p>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-row">
+                                                        <div class="col">
+                                                            <label for="amount">Cantidad</label>
+                                                            <input type="number" name="amount" id="amount"
+                                                                class="form-control" pattern="^[0-9]+" min="1" step="1"
+                                                                placeholder="Cantidad a sacar">
+                                                            <input type="hidden" name="user_id" id="user_id"
+                                                                value="{{ Auth::user()->id }}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-sm btn-secondary"
+                                                        data-dismiss="modal" id="ko">No</button>
+                                                    <button type="submit" class="btn btn-sm btn-primary"
+                                                        id="sacar">Si</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- End Modal Sacar-->
+
+                                <!-- Modal Ingresar-->
+                                <div class="modal fade" id="mas-{{$datos->code}}" tabindex="-1" role="dialog"
+                                    aria-labelledby="modalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <form id="form_eliminar"
+                                            action="{{ route('activity_raw'.'.update', $datos->id) }}" method="post">
+                                            @csrf
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-purple">
+                                                    <p class="text-center">Ingresar Materia Prima<i
+                                                            class="fa fa-commenting-o fa-4x"></i></p>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-row">
+                                                        <div class="col">
+                                                            <label for="amount">Cantidad</label>
+                                                            <input type="number" name="amount" id="amount"
+                                                                class="form-control" pattern="^[0-9]+" min="1" step="1"
+                                                                placeholder="Cantidad a sacar">
+                                                            <input type="hidden" name="user_id" id="user_id"
+                                                                value="{{ Auth::user()->id }}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-sm btn-secondary"
+                                                        data-dismiss="modal" id="ko">No</button>
+                                                    <button type="submit" class="btn btn-sm btn-primary"
+                                                        id="sacar">Si</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- End Modal Ingresar-->
 
                                 @endforeach
                             </tbody>
@@ -112,9 +210,8 @@
                                     @foreach($encabezados as $key)
                                     <th>{{$key}}</th>
                                     @endforeach
-                                    <th>Ver</th>
-                                    <th>Editar</th>
-                                    <th>Eliminar</th>
+                                    <th>Gestión</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -135,6 +232,6 @@
     </section>
     <!-- /.content -->
 
-    
+
 </div>
 @endsection

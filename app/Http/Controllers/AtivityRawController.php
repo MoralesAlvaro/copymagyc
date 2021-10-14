@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\AtivityRaw;
 use Illuminate\Http\Request;
+use App\Models\RawMaterial;
+use Illuminate\Support\Facades\Auth;
 
 class AtivityRawController extends Controller
 {
@@ -33,9 +35,30 @@ class AtivityRawController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request, $id)
+    {       
+        $rawMaterial = RawMaterial::find($id);
+
+        if ($request->amount === null || $request->amount === "") {
+            return redirect()->back()->with('warning', 'Debes ingresar una cantidad de materia prima a sacar!.');
+        }
+
+        // Sacando materia prima
+        $rawMaterial->amount = $rawMaterial->amount - $request->amount;
+        $rawMaterial->update();
+
+        // Ingresando movimiento a activity_raw
+        $ativityRaw = new AtivityRaw([
+            'total' => $request->amount,
+            'code' => $rawMaterial->code,
+            'name' => $rawMaterial->name,
+            'input_output' => '0',
+            'user_id' => Auth::user()->id,
+        ]);
+
+        $ativityRaw->save();
+        return redirect()->back()->with('success', 'Has sacado '.$request->amount.' de '.$rawMaterial->name.' !.');
+        // return response()->json([$id, $request->user_id, $request->amount, $rawMaterial]);
     }
 
     /**
@@ -57,7 +80,7 @@ class AtivityRawController extends Controller
      */
     public function edit(AtivityRaw $ativityRaw)
     {
-        //
+        
     }
 
     /**
@@ -67,9 +90,30 @@ class AtivityRawController extends Controller
      * @param  \App\Models\AtivityRaw  $ativityRaw
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AtivityRaw $ativityRaw)
+    public function update(Request $request, $id)
     {
-        //
+        $rawMaterial = RawMaterial::find($id);
+
+        if ($request->amount === null || $request->amount === "") {
+            return redirect()->back()->with('warning', 'Debes ingresar una cantidad de materia prima a sacar!.');
+        }
+
+        // Sacando materia prima
+        $rawMaterial->amount = $rawMaterial->amount + $request->amount;
+        $rawMaterial->update();
+
+        // Ingresando movimiento a activity_raw
+        $ativityRaw = new AtivityRaw([
+            'total' => $request->amount,
+            'code' => $rawMaterial->code,
+            'name' => $rawMaterial->name,
+            'input_output' => '0',
+            'user_id' => Auth::user()->id,
+        ]);
+
+        $ativityRaw->save();
+        return redirect()->back()->with('success', 'Has ingresado '.$request->amount.' de '.$rawMaterial->name.' !.');
+        // return response()->json([$id, $request->user_id, $request->amount, $rawMaterial]);
     }
 
     /**
@@ -81,5 +125,9 @@ class AtivityRawController extends Controller
     public function destroy(AtivityRaw $ativityRaw)
     {
         //
+    }
+
+    public function weekly($id)
+    {
     }
 }

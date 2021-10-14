@@ -19,8 +19,11 @@ class CreateAtivityRawsTable extends Migration
             $table->string('code', 100);
             $table->string('name', 100);
             $table->boolean('input_output');
+            $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AtivityRaw;
+use Illuminate\Support\Facades\Auth;
 use App\Models\RawMaterial;
 use App\Models\Supplier;
 use App\Models\StationeryType;
@@ -17,8 +19,8 @@ class RawMaterialController extends Controller
     public function index()
     {        
         $slug = 'rawMaterials';
-        $encabezados= ['ID', 'Código', 'Nombre', 'Fecha', 'Cantidad', 'Comentarios'];
-        $campos= ['id', 'code', 'name', 'buy_date', 'amount', 'comment'];
+        $encabezados= ['ID', 'Código', 'Nombre', 'Fecha', 'Cantidad'];
+        $campos= ['id', 'code', 'name', 'buy_date', 'amount'];
         $data = RawMaterial::orderBy('id', 'DESC')->paginate();
         return view('raw_materials.index', compact('slug','encabezados', 'campos', 'data'));
     }
@@ -57,9 +59,19 @@ class RawMaterialController extends Controller
         ]);
         //return response()->json(['data' => $request->all()]);
 
-
         $rawMaterial = new RawMaterial($request->all());
         $rawMaterial->save();
+
+        // Ingresando movimiento a activity_raw
+        $ativityRaw = new AtivityRaw([
+            'total' => $request->amount,
+            'code' => $rawMaterial->code,
+            'name' => $rawMaterial->name,
+            'input_output' => '1',
+            'user_id' => Auth::user()->id,
+        ]);
+
+        $ativityRaw->save();
 
         return redirect()->back()->with('success', 'La Materia Prima se ha registrado correctamente!.');
     }
