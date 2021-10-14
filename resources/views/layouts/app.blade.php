@@ -4,11 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ config('app.name', 'SISTEMA') }}</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Copymagic </title>
+  <title>Copy Magic </title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -70,13 +69,35 @@
   <script src="{{url('plugins/pdfmake/pdfmake.min.js')}}"></script>
   <script src="{{url('plugins/pdfmake/vfs_fonts.js')}}"></script>
   <script src="{{url('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
-  <script src="{{url('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+  <script src="{{url('plugins/datatables-buttons/js/buttons.print.js')}}"></script>
   <script src="{{url('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
   <!-- AdminLTE App -->
   <script src="{{url('dist/js/adminlte.min.js')}}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{url('dist/js/demo.js')}}"></script>
   <!-- Page specific script -->
+  @if(Auth::user()->is_admin == 1)
+  <script>
+    $(function() {
+      $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": false,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
+  @endif
+  @if (Auth::user()->is_admin != 1)
   <script>
     $(function() {
       $("#example1").DataTable({
@@ -96,6 +117,7 @@
       });
     });
   </script>
+  @endif
 </body>
 
 </html>

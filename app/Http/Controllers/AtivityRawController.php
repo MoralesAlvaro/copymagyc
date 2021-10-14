@@ -52,7 +52,7 @@ class AtivityRawController extends Controller
             'total' => $request->amount,
             'code' => $rawMaterial->code,
             'name' => $rawMaterial->name,
-            'input_output' => '0',
+            'input_output' => 'Entrada',
             'user_id' => Auth::user()->id,
         ]);
 
@@ -107,7 +107,7 @@ class AtivityRawController extends Controller
             'total' => $request->amount,
             'code' => $rawMaterial->code,
             'name' => $rawMaterial->name,
-            'input_output' => '0',
+            'input_output' => 'Salida',
             'user_id' => Auth::user()->id,
         ]);
 
@@ -127,7 +127,11 @@ class AtivityRawController extends Controller
         //
     }
 
-    public function weekly($id)
+    public function weekly()
     {
+        $data = AtivityRaw::all();
+        $encabezados= ['id', 'Código', 'Nombre', 'Cantidad', 'Operación', 'Usuario'];
+        $campos= ['id', 'code', 'name', 'total', 'input_output', 'user_id'];
+        return view('activityRaw.weekly', compact('encabezados', 'campos', 'data'));
     }
 }

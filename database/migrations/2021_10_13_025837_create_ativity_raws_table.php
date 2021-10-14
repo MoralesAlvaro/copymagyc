@@ -18,7 +18,7 @@ class CreateAtivityRawsTable extends Migration
             $table->integer('total');
             $table->string('code', 100);
             $table->string('name', 100);
-            $table->boolean('input_output');
+            $table->string('input_output', 15);
             $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();

@@ -67,7 +67,7 @@ class RawMaterialController extends Controller
             'total' => $request->amount,
             'code' => $rawMaterial->code,
             'name' => $rawMaterial->name,
-            'input_output' => '1',
+            'input_output' => 'Entrada',
             'user_id' => Auth::user()->id,
         ]);
 
