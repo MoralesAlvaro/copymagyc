@@ -43,7 +43,7 @@ Route::group([
     // Reportes
     Route::post('activity_raw/store/{id}', [AtivityRawController::class, 'store'])->middleware(['auth'])->name('activity_raw.store');
     Route::post('activity_raw/update/{id}', [AtivityRawController::class, 'update'])->middleware(['auth'])->name('activity_raw.update');
-    Route::get('activity_raw/weekly', [AtivityRawController::class, 'weekly'])->middleware(['auth'])->name('activity_raw.weekly');
+    Route::get('activity_raw/mount', [AtivityRawController::class, 'mount'])->middleware(['auth'])->name('activity_raw.mount');
 });
 
 require __DIR__.'/auth.php';

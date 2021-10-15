@@ -6,6 +6,7 @@ use App\Models\AtivityRaw;
 use Illuminate\Http\Request;
 use App\Models\RawMaterial;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AtivityRawController extends Controller
 {
@@ -127,11 +128,14 @@ class AtivityRawController extends Controller
         //
     }
 
-    public function weekly()
+    public function mount()
     {
-        $data = AtivityRaw::all();
+        $fechaActual = now();
+        $mes = date("m");
+        $data = DB::table('ativity_raws')->whereMonth('created_at', $mes)->get();
+        //return response($ativity_raw);
         $encabezados= ['id', 'Código', 'Nombre', 'Cantidad', 'Operación', 'Usuario'];
         $campos= ['id', 'code', 'name', 'total', 'input_output', 'user_id'];
-        return view('activityRaw.weekly', compact('encabezados', 'campos', 'data'));
+        return view('activityRaw.mount', compact('encabezados', 'campos', 'data'));
     }
 }

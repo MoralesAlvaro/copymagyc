@@ -75,7 +75,7 @@
                 <li class="nav-item">
                     <x-group-link nameGroup="Módulo Reportes"><i class="fas fa-file-medical-alt"></i></x-group-link>
                     <ul class="nav nav-treeview">
-                        <x-link-group link="{{ route('activity_raw.weekly') }}" nameLink="Resporte Semanal"><i
+                        <x-link-group link="{{ route('activity_raw.mount') }}" nameLink="Resporte Mensual"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
                         <x-link-group link="{{ route('dashboard') }}" nameLink="Resporte por Fecha"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
