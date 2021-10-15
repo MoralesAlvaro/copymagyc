@@ -7,7 +7,7 @@
 <!-- Main content -->
 <section class="content">
     <div class="m-2 px-4">
-        <x-btn nameBtn="Nuevo" :slug="'dashboard'"></x-btn>
+        <x-btn nameBtn="Exportar PDF " :slug="'activity_raw.exportPdf'"></x-btn>
     </div>
     <div class="container-fluid">
         <div class=" p-2 mt-2 ml-4">
@@ -30,10 +30,12 @@
                         <tbody>
                             @foreach($data as $datos)
                             <tr>
-                                @foreach($campos as $campo)
-                                <td>{{$datos->$campo}}</td>
-                                @endforeach
-                                
+                                <td>{{$datos->id}}</td>
+                                <td>{{$datos->code}}</td>
+                                <td>{{$datos->name}}</td>
+                                <td>{{$datos->total}}</td>
+                                <td>{{$datos->input_output}}</td>
+                                <td>{{$datos->user->name}}</td>
                             </tr>
                             
                             

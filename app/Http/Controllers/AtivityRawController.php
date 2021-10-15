@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\AtivityRaw;
+use App\Models\Parameter;
 use Illuminate\Http\Request;
 use App\Models\RawMaterial;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class AtivityRawController extends Controller
 {
@@ -130,12 +132,25 @@ class AtivityRawController extends Controller
 
     public function mount()
     {
-        $fechaActual = now();
         $mes = date("m");
-        $data = DB::table('ativity_raws')->whereMonth('created_at', $mes)->get();
+        $data = AtivityRaw::whereMonth('created_at', $mes)->get();
         //return response($ativity_raw);
         $encabezados= ['id', 'Código', 'Nombre', 'Cantidad', 'Operación', 'Usuario'];
         $campos= ['id', 'code', 'name', 'total', 'input_output', 'user_id'];
         return view('activityRaw.mount', compact('encabezados', 'campos', 'data'));
+    }
+
+    public function exportPdf()
+    {
+        $parameters = Parameter::all();
+        $mes = date("m");
+        $data = AtivityRaw::whereMonth('created_at', $mes)->get();
+        //$user = $data[0]->user->name;
+        //return response($user);
+        $encabezados= ['id', 'Código', 'Nombre', 'Cantidad', 'Operación', 'Usuario'];
+        $campos= ['id', 'code', 'name', 'total', 'input_output', 'user_id'];
+        $panel = "Reporte General";
+        $pdf = PDF::loadView('report.pdf', compact('panel', 'parameters', 'campos', 'encabezados', 'data'));
+        return $pdf->download('Movimientos Materia Prima.pdf');
     }
 }

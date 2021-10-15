@@ -44,6 +44,7 @@ Route::group([
     Route::post('activity_raw/store/{id}', [AtivityRawController::class, 'store'])->middleware(['auth'])->name('activity_raw.store');
     Route::post('activity_raw/update/{id}', [AtivityRawController::class, 'update'])->middleware(['auth'])->name('activity_raw.update');
     Route::get('activity_raw/mount', [AtivityRawController::class, 'mount'])->middleware(['auth'])->name('activity_raw.mount');
+    Route::get('activity_raw/exportPdf', [AtivityRawController::class, 'exportPdf'])->middleware(['auth'])->name('activity_raw.exportPdf');
 });
 
 require __DIR__.'/auth.php';

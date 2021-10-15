@@ -1,9 +1,11 @@
 <html>
 
 <body class="container-document">
+
   <header>
-    <h1>Reporte de Prestamos</h1>
+    <h1>{{$parameters[0]->name}}</h1>
     <h2>Fecha: {{date('d-m-Y')}}</h2>
+    
   </header>
   <footer>
     <table>
@@ -33,11 +35,14 @@
         </thead>
         <tbody>
           @foreach($data as $datos)
+
           <tr>
             <td>{{$datos->id}}</td>
-            <td>{{$datos->estudiante->nombre}}</td>
-            <td>{{$datos->libro->titulo}}</td>
-            <td>{{$datos->created_at->format('j F, Y')}}</td>
+            <td>{{$datos->code}}</td>
+            <td>{{$datos->name}}</td>
+            <td>{{$datos->total}}</td>
+            <td>{{$datos->input_output}}</td>
+            <td>{{$datos->user->name}}</td>
           </tr>
           @endforeach
 
@@ -80,6 +85,10 @@
     margin: 10px 0;
   }
 
+  img{
+    height: 10px;
+    width: 10px;
+  }
   header h2 {
     margin: 0 0 10px 0;
   }

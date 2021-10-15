@@ -16,4 +16,9 @@ class AtivityRaw extends Model
         'input_output',
         'user_id'
     ];
+
+    // Un usuario puede crear muchas materias primas
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
