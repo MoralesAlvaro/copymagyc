@@ -144,13 +144,13 @@ class SupplierController extends Controller
         $data = Supplier::find($id);
         try {
             if ($data == null) {
-                return redirect('/supplier')->with('success', 'El registro que desea eliminar no se encuentra!.');
+                return redirect('/supplier')->with('warning', 'El registro que desea eliminar no se encuentra!.');
             }
             
             $data->delete();
             return redirect('/supplier')->with('success', 'El registro se ha sido eliminado correctamente!.');
         } catch (\Throwable $th) {
-            return redirect('/supplier')->with('success', 'No puede eliminar un proveedor relacionado con una materia prima!.');
+            return redirect('/supplier')->with('warning', 'No puede eliminar un proveedor relacionado con una materia prima!.');
         }
     }
 }
