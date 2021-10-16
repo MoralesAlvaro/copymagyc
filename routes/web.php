@@ -43,6 +43,10 @@ Route::group([
     // Reportes
     Route::post('activity_raw/store/{id}', [AtivityRawController::class, 'store'])->middleware(['auth'])->name('activity_raw.store');
     Route::post('activity_raw/update/{id}', [AtivityRawController::class, 'update'])->middleware(['auth'])->name('activity_raw.update');
+    // Rango de fechas
+    Route::get('activity_raw/date', [AtivityRawController::class, 'date'])->middleware(['auth'])->name('activity_raw.date');
+    Route::post('activity_raw/exportDate', [AtivityRawController::class, 'exportDate'])->middleware(['auth'])->name('activity_raw.exportDate');
+    // Mensual
     Route::get('activity_raw/mount', [AtivityRawController::class, 'mount'])->middleware(['auth'])->name('activity_raw.mount');
     Route::get('activity_raw/exportPdf', [AtivityRawController::class, 'exportPdf'])->middleware(['auth'])->name('activity_raw.exportPdf');
 });

@@ -75,16 +75,6 @@ class AtivityRawController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\AtivityRaw  $ativityRaw
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AtivityRaw $ativityRaw)
-    {
-        
-    }
 
     /**
      * Update the specified resource in storage.
@@ -119,15 +109,17 @@ class AtivityRawController extends Controller
         // return response()->json([$id, $request->user_id, $request->amount, $rawMaterial]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\AtivityRaw  $ativityRaw
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(AtivityRaw $ativityRaw)
+    
+    public function date(Request $request)
     {
-        //
+        return view('activityRaw.date');
+    }
+
+
+    public function exportDate(Request $request)
+    {
+        $data = AtivityRaw::whereBetween('created_at', [$request->from, $request->to])->get();
+        return response()->json([$data, $request->from, $request->to]);
     }
 
     public function mount()

@@ -77,7 +77,7 @@
                     <ul class="nav nav-treeview">
                         <x-link-group link="{{ route('activity_raw.mount') }}" nameLink="Reporte Mensual"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
-                        <x-link-group link="{{ route('dashboard') }}" nameLink="Reporte por Fecha"><i
+                        <x-link-group link="{{ route('activity_raw.date') }}" nameLink="Reporte por Fecha"><i
                                 class="fas fa-vote-yea"></i></x-link-group>
                     </ul>
                 </li>

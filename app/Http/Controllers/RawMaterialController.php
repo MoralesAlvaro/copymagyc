@@ -54,8 +54,8 @@ class RawMaterialController extends Controller
             'amount' => ['required', 'integer'],
             'comment' => ['nullable', 'string', 'max:255'],
             'user_id' => ['integer'],
-            'supplier_id' => ['required', 'integer', 'max:2'],
-            'stationery_type_id' => ['required', 'integer', 'max:2'],
+            'supplier_id' => ['required', 'integer'],
+            'stationery_type_id' => ['required', 'integer'],
         ]);
         //return response()->json(['data' => $request->all()]);
 
@@ -127,8 +127,8 @@ class RawMaterialController extends Controller
                 'amount' => ['required', 'integer'],
                 'comment' => ['nullable', 'string', 'max:255'],
                 'user_id' => ['integer'],
-                'supplier_id' => ['required', 'integer', 'max:2'],
-                'stationery_type_id' => ['required', 'integer', 'max:2'],
+                'supplier_id' => ['required', 'integer'],
+                'stationery_type_id' => ['required', 'integer'],
             ]);
 
             // Verificando si ha habido modificaciones
@@ -144,7 +144,7 @@ class RawMaterialController extends Controller
                 }
             }
 
-            return redirect('/rawMaterials'.'/'.$id)->with('success', 'El Proveedor se ha sido actualizado correctamente!.');      
+            return redirect('/rawMaterials'.'/'.$id)->with('success', 'La Materia Prima se ha sido actualizado correctamente!.');      
         }
     }
 
