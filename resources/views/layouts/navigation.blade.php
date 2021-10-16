@@ -90,6 +90,8 @@
                                 class="fas fa-vote-yea"></i></x-link-group>
                     </ul>
                 </li>
+
+                @if(Auth::user()->is_admin == 1)
                 <li class="nav-item">
                     <x-group-link nameGroup="Módulo Usuarios"><i class="fas fa-users"></i></x-group-link>
                     <ul class="nav nav-treeview">
@@ -107,6 +109,7 @@
                                 class="fas fa-cog"></i></x-link-group>
                     </ul>
                 </li>
+                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

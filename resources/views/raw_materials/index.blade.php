@@ -82,13 +82,16 @@
                                         <a href="{{ route($slug.'.edit',$datos->id)}}"
                                             class="btn btn-sm btn-primary">Editar</a>
                                         <!-- Eliinar el registro a travez del modal que está más abajo -->
+                                        @if(Auth::user()->is_admin == 1)
                                         <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal"
                                             data-target="#modal-{{$datos->id}}">
                                             Eliminar
                                         </button>
+                                        @endif
                                     </td>
                                 </tr>
 
+                                @if(Auth::user()->is_admin == 1)
                                 <!-- Modal Eliminar-->
                                 <div class="modal fade" id="modal-{{$datos->id}}" tabindex="-1" role="dialog"
                                     aria-labelledby="modalLabel" aria-hidden="true">
@@ -120,6 +123,7 @@
                                     </div>
                                 </div>
                                 <!-- End Modal Eliminar-->
+                                @endif
 
                                 <!-- Modal Sacar-->
                                 <div class="modal fade" id="menos-{{$datos->code}}" tabindex="-1" role="dialog"

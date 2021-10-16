@@ -56,7 +56,9 @@
                                     @endforeach
                                     <th>Ver</th>
                                     <th>Editar</th>
+                                    @if(Auth::user()->is_admin == 1)
                                     <th>Eliminar</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,6 +75,7 @@
                                         <a href="{{ route($slug.'.edit',$datos->id)}}"
                                             class="btn btn-sm btn-primary">Editar</a>
                                     </td>
+                                    @if(Auth::user()->is_admin == 1)
                                     <td>
                                         <!-- Eliinar el registro a travez del modal que está más abajo -->
                                         <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal"
@@ -80,8 +83,10 @@
                                             Eliminar
                                         </button>
                                     </td>
+                                    @endif
                                 </tr>
 
+                                @if(Auth::user()->is_admin == 1)
                                 <!-- Modal Eliminar-->
                                 <div class="modal fade" id="modal-{{$datos->id}}" tabindex="-1" role="dialog"
                                     aria-labelledby="modalLabel" aria-hidden="true">
@@ -115,6 +120,7 @@
                                     </div>
                                 </div>
                                 <!-- End Modal Eliminar-->
+                                @endif
 
 
                                 @endforeach
@@ -126,7 +132,9 @@
                                     @endforeach
                                     <th>Ver</th>
                                     <th>Editar</th>
+                                    @if(Auth::user()->is_admin == 1)
                                     <th>Eliminar</th>
+                                    @endif
                                 </tr>
                             </tfoot>
                         </table>
