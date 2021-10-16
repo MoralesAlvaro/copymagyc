@@ -119,7 +119,12 @@ class AtivityRawController extends Controller
     public function exportDate(Request $request)
     {
         $data = AtivityRaw::whereBetween('created_at', [$request->from, $request->to])->get();
-        return response()->json([$data, $request->from, $request->to]);
+        //return response()->json([$data, $request->from, $request->to]);
+        $encabezados= ['id', 'Código', 'Nombre', 'Cantidad', 'Operación', 'Usuario'];
+        $campos= ['id', 'code', 'name', 'total', 'input_output', 'user_id'];
+        $panel = "Reporte General";
+        $pdf = PDF::loadView('report.pdf', compact('panel', 'parameters', 'campos', 'encabezados', 'data'));
+        return $pdf->download('Movimientos Materia Prima.pdf');
     }
 
     public function mount()
