@@ -21,4 +21,9 @@ class Supplier extends Model
         'dui',
         'active',
     ];
+
+    // Un proveedor relacionado con una muchas materias primas
+    public function rawMaterials(){
+        return $this->belongsTo(RawMaterials::class);
+    }
 }

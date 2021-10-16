@@ -27,7 +27,7 @@ class CreateRawMaterialsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            $table->foreign('supplier_id')->references('id')->on('suppliers');
             $table->foreign('stationery_type_id')->references('id')->on('stationery_types')->onDelete('cascade');
         });
     }

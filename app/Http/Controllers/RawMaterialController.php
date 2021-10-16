@@ -157,12 +157,12 @@ class RawMaterialController extends Controller
     public function destroy($id)
     {
         //
-        $data = Supplier::find($id);
+        $data = RawMaterial::find($id);
         if ($data == null) {
-            return redirect('/raw_materials')->with('success', 'El registro que desea eliminar no se encuentra!.');
+            return redirect('/rawMaterials')->with('success', 'El registro que desea eliminar no se encuentra!.');
         }
         
         $data->delete();
-        return redirect('/raw_materials')->with('success', 'El registro se ha sido eliminado correctamente!.');
+        return redirect('/rawMaterials')->with('success', 'El registro se ha sido eliminado correctamente!.');
     }
 }

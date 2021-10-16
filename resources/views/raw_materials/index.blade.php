@@ -103,19 +103,17 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <p class="p-2 bg-danger text-white">¿En serio quieres eliminar
-                                                    el
-                                                    registro?</p>
+                                                <p class="p-2 bg-danger text-white">¿En serio quieres eliminar el registro?</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-sm btn-primary"
                                                     data-dismiss="modal" id="ko">No</button>
                                                 <form id="form_eliminar"
-                                                    action="{{ route($slug.'.destroy', $datos->id)}}" method="post">
+                                                    action="{{ route('rawMaterials.destroy', $datos->id)}}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-sm btn-danger"
-                                                        id="ok">Si</button>
+                                                        id="delete">Si</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -127,7 +125,7 @@
                                 <div class="modal fade" id="menos-{{$datos->code}}" tabindex="-1" role="dialog"
                                     aria-labelledby="modalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
-                                        <form id="form_eliminar"
+                                        <form id="sacar"
                                             action="{{ route('activity_raw'.'.store', $datos->id) }}" method="post">
                                             @csrf
                                             <div class="modal-content">
@@ -167,7 +165,7 @@
                                 <div class="modal fade" id="mas-{{$datos->code}}" tabindex="-1" role="dialog"
                                     aria-labelledby="modalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
-                                        <form id="form_eliminar"
+                                        <form id="ongresar"
                                             action="{{ route('activity_raw'.'.update', $datos->id) }}" method="post">
                                             @csrf
                                             <div class="modal-content">
