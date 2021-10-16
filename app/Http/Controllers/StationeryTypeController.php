@@ -126,6 +126,16 @@ class StationeryTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = StationeryType::find($id);
+        try {
+            if ($data == null) {
+                return redirect('/stationeryTypes')->with('warning', 'El registro que desea eliminar no se encuentra!.');
+            }
+            
+            $data->delete();
+            return redirect('/stationeryTypes')->with('success', 'El registro se ha sido eliminado correctamente!.');
+        } catch (\Throwable $th) {
+            return redirect('/stationeryTypes')->with('warning', 'El registro que desea eliminar no se encuentra!.');
+        }
     }
 }

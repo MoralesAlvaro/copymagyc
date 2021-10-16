@@ -72,6 +72,7 @@
                                 class="fas fa-vote-yea"></i></x-link-group>
                     </ul>
                 </li>
+                @if(Auth::user()->is_admin == 1)
                 <li class="nav-item">
                     <x-group-link nameGroup="Módulo Reportes"><i class="fas fa-file-medical-alt"></i></x-group-link>
                     <ul class="nav nav-treeview">
@@ -81,6 +82,7 @@
                                 class="fas fa-vote-yea"></i></x-link-group>
                     </ul>
                 </li>
+                @endif
                 <li class="nav-item">
                     <x-group-link nameGroup="Módulo Proveedores"><i class="fas fa-cart-arrow-down"></i></x-group-link>
                     <ul class="nav nav-treeview">
