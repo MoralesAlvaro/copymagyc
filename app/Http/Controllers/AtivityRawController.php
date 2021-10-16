@@ -118,8 +118,13 @@ class AtivityRawController extends Controller
 
     public function exportDate(Request $request)
     {
-        $data = AtivityRaw::whereBetween('created_at', [$request->from, $request->to])->get();
+        if ($request->from > $request->to) {
+            $data = AtivityRaw::whereBetween('created_at', [$request->to, $request->from])->get();    
+        }else{
+            $data = AtivityRaw::whereBetween('created_at', [$request->from, $request->to])->get();
+        }
         //return response()->json([$data, $request->from, $request->to]);
+        $parameters = Parameter::all();
         $encabezados= ['id', 'Código', 'Nombre', 'Cantidad', 'Operación', 'Usuario'];
         $campos= ['id', 'code', 'name', 'total', 'input_output', 'user_id'];
         $panel = "Reporte General";

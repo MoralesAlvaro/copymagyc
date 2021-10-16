@@ -2,6 +2,19 @@
 
 @section('content')
 
+@if (session('warning'))
+        <div class="mx-1 ml-8">
+            <div class="card-body">
+                <div class="alert alert-warning text-center msg alert-dismissible fade show" id="success" role="alert">
+                    <strong>{{ session('warning') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        @endif
+
 <div id="emcabezado"><h2>Hola</h2></div>
 <div class="content-wrapper pt-3">
 <!-- Main content -->
