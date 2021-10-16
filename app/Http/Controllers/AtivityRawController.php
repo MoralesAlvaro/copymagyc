@@ -112,38 +112,48 @@ class AtivityRawController extends Controller
     
     public function date(Request $request)
     {
-        return view('activityRaw.date');
+        if (Auth::user()->is_admin == 1) {
+            return view('activityRaw.date');
+        }
+        return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
     }
 
 
     public function exportDate(Request $request)
     {
-        if ($request->from > $request->to) {
-            $data = AtivityRaw::whereBetween('created_at', [$request->to, $request->from])->get();    
-        }else{
-            $data = AtivityRaw::whereBetween('created_at', [$request->from, $request->to])->get();
+        if (Auth::user()->is_admin == 1) {
+            if ($request->from > $request->to) {
+                $data = AtivityRaw::whereBetween('created_at', [$request->to, $request->from])->get();    
+            }else{
+                $data = AtivityRaw::whereBetween('created_at', [$request->from, $request->to])->get();
+            }
+            //return response()->json([$data, $request->from, $request->to]);
+            $parameters = Parameter::all();
+            $encabezados= ['id', 'Código', 'Nombre', 'Cantidad', 'Operación', 'Usuario'];
+            $campos= ['id', 'code', 'name', 'total', 'input_output', 'user_id'];
+            $panel = "Reporte General";
+            $pdf = PDF::loadView('report.pdf', compact('panel', 'parameters', 'campos', 'encabezados', 'data'));
+            return $pdf->download('Movimientos Materia Prima.pdf');
         }
-        //return response()->json([$data, $request->from, $request->to]);
-        $parameters = Parameter::all();
-        $encabezados= ['id', 'Código', 'Nombre', 'Cantidad', 'Operación', 'Usuario'];
-        $campos= ['id', 'code', 'name', 'total', 'input_output', 'user_id'];
-        $panel = "Reporte General";
-        $pdf = PDF::loadView('report.pdf', compact('panel', 'parameters', 'campos', 'encabezados', 'data'));
-        return $pdf->download('Movimientos Materia Prima.pdf');
+        return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
     }
 
     public function mount()
     {
-        $mes = date("m");
-        $data = AtivityRaw::whereMonth('created_at', $mes)->get();
-        //return response($ativity_raw);
-        $encabezados= ['id', 'Código', 'Nombre', 'Cantidad', 'Operación', 'Usuario'];
-        $campos= ['id', 'code', 'name', 'total', 'input_output', 'user_id'];
-        return view('activityRaw.mount', compact('encabezados', 'campos', 'data'));
+        if (Auth::user()->is_admin == 1) {
+            $mes = date("m");
+            $data = AtivityRaw::whereMonth('created_at', $mes)->get();
+            //return response($ativity_raw);
+            $encabezados= ['id', 'Código', 'Nombre', 'Cantidad', 'Operación', 'Usuario'];
+            $campos= ['id', 'code', 'name', 'total', 'input_output', 'user_id'];
+            return view('activityRaw.mount', compact('encabezados', 'campos', 'data'));
+        }
+        return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
     }
 
     public function exportPdf()
     {
+        if (Auth::user()->is_admin == 1) {
         $parameters = Parameter::all();
         $mes = date("m");
         $data = AtivityRaw::whereMonth('created_at', $mes)->get();
@@ -154,5 +164,7 @@ class AtivityRawController extends Controller
         $panel = "Reporte General";
         $pdf = PDF::loadView('report.pdf', compact('panel', 'parameters', 'campos', 'encabezados', 'data'));
         return $pdf->download('Movimientos Materia Prima.pdf');
+    }
+    return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
     }
 }

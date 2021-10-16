@@ -135,7 +135,7 @@ class StationeryTypeController extends Controller
             $data->delete();
             return redirect('/stationeryTypes')->with('success', 'El registro se ha sido eliminado correctamente!.');
         } catch (\Throwable $th) {
-            return redirect('/stationeryTypes')->with('warning', 'El registro que desea eliminar no se encuentra!.');
+            return redirect('/stationeryTypes')->with('warning', 'No puede eliminar un tipo de materia prima relacionado con una materia prima!.');
         }
     }
 }

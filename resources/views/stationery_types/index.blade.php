@@ -19,6 +19,18 @@
             </div>
         </div >
         @endif
+        @if (session('warning'))
+        <div class="mx-4 ml-8">
+            <div class="card-body">
+                <div class="alert alert-warning text-center msg alert-dismissible fade show" id="warning" role="alert">
+                    <strong>{{ session('warning') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div >
+        @endif
         <!-- EDN Mensaje de confirmación -->
     </div>
     <!-- Main content -->
