@@ -23,7 +23,7 @@
                 <div class="mx-2 my-2 py-1 px-1">
                     <x-btn nameBtn="Retornar" :slug="$slug.'.index'" />
                 </div>
-                <x-card :result="$data->name.' '.$data->name">
+                <x-card :result="$data->name">
                     <div class="col-6 text-justify">
                             <x-p-card :result="$data->code" nameLabel="Código" icono="fas fa-barcode" />
                             <x-p-card :result="$data->name" nameLabel="Nombre" icono="fas fa-barcode" />

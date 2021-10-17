@@ -44,7 +44,7 @@
                             {{-- color --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="color">Nombre</label>
+                                    <label for="color">Color</label>
                                     <input type="text" name="color" class="form-control" id="color"
                                         placeholder="Color de materia prima" value="{{ old('color') }}">
                                 </div>
@@ -59,6 +59,7 @@
                                         id="material" required placeholder=" tipo">
                                         <option value="Papeliería">Papeliería</option>
                                         <option value="Promocionales">Promocionales</option>
+                                    <option value="Suminisitros">Suministros</option>
                                         <option value="Otros">Otros</option>
                                     </select>
                                 </div>

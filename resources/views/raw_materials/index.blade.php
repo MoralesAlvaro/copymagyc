@@ -187,7 +187,7 @@
                                                             <label for="amount">Cantidad</label>
                                                             <input type="number" name="amount" id="amount"
                                                                 class="form-control" pattern="^[0-9]+" min="1" step="1"
-                                                                placeholder="Cantidad a sacar">
+                                                                placeholder="Cantidad a ingresar">
                                                             <input type="hidden" name="user_id" id="user_id"
                                                                 value="{{ Auth::user()->id }}">
                                                         </div>

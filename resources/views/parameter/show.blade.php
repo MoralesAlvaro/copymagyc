@@ -37,7 +37,7 @@
 
                 <div class="col-6 text-justify">
                     <x-p-card :result="$data[0]->name" nameLabel="Nombre" icono="fas fa-building" />
-                    <x-p-card :result="$data[0]->representative" nameLabel="Logo secundario"
+                    <x-p-card :result="$data[0]->representative" nameLabel="Propietario"
                         icono="fas fa-building" />
                     <x-p-card :result="$data[0]->telephone" nameLabel="Telefono" icono="fas fa-building" />
                     <x-p-card :result="$data[0]->email" nameLabel="Correo Electrónico" icono="fas fa-building" />

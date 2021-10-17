@@ -45,7 +45,7 @@
                             {{-- color --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="color">Nombre</label>
+                                    <label for="color">Color</label>
                                     <input type="text" name="color" class="form-control" id="color"
                                         placeholder="Color de materia prima" value="{{ $data->color }}">
                                 </div>
@@ -55,21 +55,29 @@
                             {{-- material --}}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="material">Typo Papeleria</label>
+                                    <label for="material">Tipo Papeleria</label>
                                     <select name="material" class="form-control select2" style="width: 100%;"
                                         id="material" required >
                                         @if ($data->material == 'Papelería')
                                         <option value="Papelería">Papelería</option>
                                         <option value="Promocionales">Promocionales</option>
+                                         <option value="Suministros">Suministros</option>
                                         <option value="Otros">Otros</option>
                                         @endif
                                         @if ($data->material == 'Promocionales')
                                         <option value="Promocionales">Promocionales</option>
                                         <option value="Papelería">Papelería</option>
+                                         <option value="Suministros">Suministros</option>
+                                        <option value="Otros">Otros</option>
+                                        @endif
+                                         @if ($data->material == 'Suministros')
+                                        <option value="Papelería">Papeleria</option>
+                                        <option value="Promocionales">Promocionales</option>
                                         <option value="Otros">Otros</option>
                                         @endif
                                         @if ($data->material == 'Otros')
                                         <option value="Otros">Otros</option>
+                                         <option value="Suministros">Suministros</option>
                                         <option value="Promocionales">Promocionales</option>
                                         <option value="Papelería">Papelería</option>
                                         @endif

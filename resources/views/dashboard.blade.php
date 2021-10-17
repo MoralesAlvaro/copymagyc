@@ -31,14 +31,24 @@
       </div>
     </div>
   </div>
+  <table  >
+    <tr>
+      <td   >
   sdLorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque, eligendi eaque fugit error iure, debitis cupiditate sint quia adipisci et aliquam velit. Iste repudiandae consectetur est similique vitae, nam velit.
+  <br>
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem iure tempora minus autem ducimus aspernatur! Quas sequi, odit nostrum tempora quos iste unde architecto consectetur possimus eaque. Ipsa, reiciendis laudantium.
-
+</td>
+<br>
+<td  >
   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga sapiente id eum dolor fugit neque aut. Similique voluptatem, labore impedit assumenda, atque exercitationem ab ullam alias consequuntur voluptas porro suscipit.
   <br>
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus excepturi incidunt in voluptatum, harum error ipsam quasi eaque quos optio, sapiente necessitatibus cumque laborum ipsum fugiat minima quis corrupti officia!
   <br>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, non! Quas nostrum quibusdam magni autem vitae corporis perspiciatis asperiores, velit porro, quaerat dolorem quae tempore incidunt sint rem! Laudantium, odit?
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore eum laboriosam laudantium asperiores sint dignissimos magni nemo ea? Vitae voluptatum dolor tempora quod facilis tenetur esse corporis officiis deleniti in.
+  </td>
+ 
+  </tr>
+  </table>
 </div>
+
 @endsection
+
