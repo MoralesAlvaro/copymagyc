@@ -8,6 +8,7 @@ use App\Models\RawMaterial;
 use App\Models\Supplier;
 use App\Models\StationeryType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RawMaterialController extends Controller
 {
@@ -54,6 +55,7 @@ class RawMaterialController extends Controller
             'amount' => ['required', 'integer'],
             'comment' => ['nullable', 'string', 'max:255'],
             'user_id' => ['integer'],
+            'photo' => '',
             'supplier_id' => ['required', 'integer'],
             'stationery_type_id' => ['required', 'integer'],
         ]);
@@ -62,13 +64,26 @@ class RawMaterialController extends Controller
         $rawMaterial = new RawMaterial($request->all());
         $rawMaterial->save();
 
+        // IMG
+        if (!$request->file('photo')) {
+            // Imagen default de usuario
+            $pathImgUrl = "https://via.placeholder.com/1350x280.png/05ff8f?text=DEFAULT";
+            // Actualizando ruta img
+            $rawMaterial->fill(['photo' => asset($pathImgUrl)])->save();
+        }else{
+            // Ruta de guardado
+            $pathImgUrl = Storage::disk('public')->put('img/rawMaterials', $request->file('photo'));
+            // Actualizando ruta img
+            $rawMaterial->fill(['photo' => asset($pathImgUrl)])->save();
+        }
+
         // Ingresando movimiento a activity_raw
         $ativityRaw = new AtivityRaw([
             'total' => $request->amount,
             'code' => $rawMaterial->code,
             'name' => $rawMaterial->name,
             'input_output' => 'Entrada',
-            'user_id' => Auth::user()->id,
+            'user_id' => Auth::User()->id,
         ]);
 
         $ativityRaw->save();
@@ -126,7 +141,8 @@ class RawMaterialController extends Controller
                 'buy_date' => ['nullable', 'date'],
                 'amount' => ['required', 'integer'],
                 'comment' => ['nullable', 'string', 'max:255'],
-                'user_id' => ['integer'],
+                 'user_id' => ['integer'],
+                'photo' => '',
                 'supplier_id' => ['required', 'integer'],
                 'stationery_type_id' => ['required', 'integer'],
             ]);
@@ -142,6 +158,28 @@ class RawMaterialController extends Controller
                     // Actualizando campo
                     $rawMaterials->fill([$item => $valor_campo_new])->save();
                 }
+            }
+
+            // IMG: Verificación de cambios de photo
+            if ($request->file('photo') ) {
+                // Ruta de guardado
+                $pathImgUrl = Storage::disk('public')->put('img/rawMaterials', $request->file('photo'));
+                // Comprobando que la imagen no sea la default
+                if ($rawMaterials->photo != "https://via.placeholder.com/1350x280.png/05ff8f?text=DEFAULT") {
+                    $reemplazo = str_replace( env('APP_URL'), "", $rawMaterials->photo );
+    
+                    // Comprobando que exista el archivo
+                    if (file_exists($reemplazo)) {
+                        unlink($reemplazo);
+                    }
+                }
+    
+                // actualiznado campo
+                $rawMaterials->fill(['photo' => asset($pathImgUrl)])->update();
+            }else{
+                $pathImgUrl = $rawMaterials->photo;
+                // actualiznado campo
+                $rawMaterials->fill(['photo' => asset($pathImgUrl)])->update();
             }
 
             return redirect('/rawMaterials'.'/'.$id)->with('success', 'La Materia Prima se ha sido actualizado correctamente!.');      

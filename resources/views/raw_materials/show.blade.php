@@ -24,14 +24,15 @@
                     <x-btn nameBtn="Retornar" :slug="$slug.'.index'" />
                 </div>
                 <x-card :result="$data->name">
-                    <div class="col-6 text-justify">
-                            <x-p-card :result="$data->code" nameLabel="Código" icono="fas fa-barcode" />
-                            <x-p-card :result="$data->name" nameLabel="Nombre" icono="fas fa-barcode" />
-                            <x-p-card :result="$data->buy_date" nameLabel="Fecha de Compra" icono="fas fa-calendar-alt" />
-                            <x-p-card :result="$data->amount" nameLabel="Cantidad" icono="fas fa-cart-plus" />
+                    <div class="col-5 text-center">
+                        <x-img-card :src="$data->photo" alt="Usuario: {{$data->name}}" class="img-circle img-fluid" />
                     </div>
 
-                    <div class="col-6 text-justify">
+                    <div class="col-7 text-justify">
+                        <x-p-card :result="$data->code" nameLabel="Código" icono="fas fa-barcode" />
+                        <x-p-card :result="$data->name" nameLabel="Nombre" icono="fas fa-barcode" />
+                        <x-p-card :result="$data->buy_date" nameLabel="Fecha de Compra" icono="fas fa-calendar-alt" />
+                        <x-p-card :result="$data->amount" nameLabel="Cantidad" icono="fas fa-cart-plus" />
                         
                         <x-p-card :result="$data->supplier->name" nameLabel="Proveedor" icono="fas fa-building" />
                         <x-p-card :result="$data->stationeryType->name" nameLabel="Tipo" icono="fas fa-building" />

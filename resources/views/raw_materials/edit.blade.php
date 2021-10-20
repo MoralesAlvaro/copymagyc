@@ -94,24 +94,40 @@
                                     </div>
                                     <x-auth-validation-errors class="" :errors="$errors" campo="supplier_id" />
                                 </div>
+                            </div>
 
-                                {{-- stationeryTypes --}}
-                                <div class="">
-                                    <div class="form-group">
-                                        <label for="stationery_type_id">Tipo Papelería</label>
-                                        <select name="stationery_type_id" class="form-control select2"
-                                            style="width: 100%;" id="stationery_type_id" required placeholder=" tipo" value="{{$data->stationery_type_id}}">
-                                            @foreach($stationeryTypes as $item)
-                                                @if($item->id == $data->stationery_type_id)
-                                                    <option selected="true" value="{{$item->id}}">{{$item->name}}</option>
-                                                @else
-                                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <x-auth-validation-errors class="" :errors="$errors" campo="stationery_type_id" />
+                            {{-- stationeryTypes --}}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="stationery_type_id">Tipo Papelería</label>
+                                    <select name="stationery_type_id" class="form-control select2"
+                                        style="width: 100%;" id="stationery_type_id" required placeholder=" tipo" value="{{$data->stationery_type_id}}">
+                                        @foreach($stationeryTypes as $item)
+                                            @if($item->id == $data->stationery_type_id)
+                                                <option selected="true" value="{{$item->id}}">{{$item->name}}</option>
+                                            @else
+                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                 </div>
+                                <x-auth-validation-errors class="" :errors="$errors" campo="stationery_type_id" />
+                            </div>
+
+                            {{-- Photo --}}
+                            <div class="col-md-6">
+                                <label for="photo">Buscar foto de usuario</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="photo">Buscar</span>
+                                    </div>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="photo" name="photo"
+                                            aria-describedby="photo" value="{{$data->photo}}">
+                                        <label class="custom-file-label" for="photo">Buscar Archivo</label>
+                                    </div>
+                                </div>
+                                <x-auth-validation-errors class="" :errors="$errors" campo="photo" />
                             </div>
 
                             {{-- comment --}}
