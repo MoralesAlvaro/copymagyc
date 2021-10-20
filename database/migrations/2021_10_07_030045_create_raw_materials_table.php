@@ -21,6 +21,7 @@ class CreateRawMaterialsTable extends Migration
             $table->integer('amount')->unsigned()->nullable();
             $table->string('comment')->nullable();
             $table->unsignedInteger('user_id');
+            $table->string('photo')->nullable();
             $table->unsignedInteger('supplier_id');
             $table->unsignedInteger('stationery_type_id');
             $table->softDeletes();

@@ -18,6 +18,7 @@ class RawMaterial extends Model
         'user_id',
         'supplier_id',
         'stationery_type_id',
+        'photo'
     ];
 
     // Un usuario puede crear muchas materias primas

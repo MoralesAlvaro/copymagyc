@@ -29,6 +29,7 @@ class RawMaterialFactory extends Factory
             'amount' => $this->faker->numberBetween($min = 100 , $max = 999),
             'comment' => $this->faker->randomElement(['Pequeña', 'Mediana', 'Grande']),
             'user_id' => '1',
+            'photo' => $this->faker->imageUrl($width = 640, $height = 480),
             'supplier_id' => $this->faker->randomElement(['2', '1']),
             'stationery_type_id' => $this->faker->randomElement(['2', '1']),
         ];
