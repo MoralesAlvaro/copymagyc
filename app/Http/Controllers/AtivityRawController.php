@@ -46,6 +46,10 @@ class AtivityRawController extends Controller
             return redirect()->back()->with('warning', 'Debes ingresar una cantidad de materia prima a sacar!.');
         }
 
+        // Validando que lo que saca sea igual o menor a la cantidad que hay que hay
+        if ($rawMaterial->amount < $request->amount) {
+            return redirect()->back()->with('warning', 'No puedes sacar más de '.$rawMaterial->amount.' unidades de '.$rawMaterial->name.' !.');
+        }
         // Sacando materia prima
         $rawMaterial->amount = $rawMaterial->amount - $request->amount;
         $rawMaterial->update();
