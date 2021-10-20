@@ -24,7 +24,7 @@ class UserController extends Controller
             $data = User::orderBy('id', 'DESC')->paginate();
             return view('user.index', compact('slug','encabezados', 'campos', 'data'));
         }
-        return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
+        return redirect()->back()->with('warning', 'No estas autorizado para llevar a cabo esta operación !.');
         
     }
 
@@ -40,7 +40,7 @@ class UserController extends Controller
             $slug = 'user';
             return view('user.create', compact('slug'));
         }
-        return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
+        return redirect()->back()->with('warning', 'No estas autorizado para llevar a cabo esta operación !.');
     }
 
     /**
@@ -83,7 +83,7 @@ class UserController extends Controller
 
             return redirect()->back()->with('success', 'El usuario se ha registrado correctamente!.');
         }
-        return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
+        return redirect()->back()->with('warning', 'No estas autorizado para llevar a cabo esta operación !.');
     }
 
     /**
@@ -99,7 +99,7 @@ class UserController extends Controller
             $data = User::findOrFail($id);
             return view('user.show', compact('slug', 'data'));
         }
-        return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
+        return redirect()->back()->with('warning', 'No estas autorizado para llevar a cabo esta operación !.');
     }
 
     /**
@@ -115,7 +115,7 @@ class UserController extends Controller
             $data = User::findOrFail($id);
             return view('user.edit', compact('slug', 'data'));
         }
-        return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
+        return redirect()->back()->with('warning', 'No estas autorizado para llevar a cabo esta operación !.');
     }
 
     /**
@@ -181,7 +181,7 @@ class UserController extends Controller
             }
             //return redirect()->back()->with('success', 'No es posible actualizar el usuario.');
         }
-        return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
+        return redirect()->back()->with('warning', 'No estas autorizado para llevar a cabo esta operación !.');
     }
 
     /**
@@ -212,6 +212,6 @@ class UserController extends Controller
             return redirect('/user')->with('success', 'El registro se ha sido eliminado correctamente!.');
 
         }
-        return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
+        return redirect()->back()->with('warning', 'No estas autorizado para llevar a cabo esta operación !.');
     }
 }

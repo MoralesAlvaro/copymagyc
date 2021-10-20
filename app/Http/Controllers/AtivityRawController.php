@@ -12,25 +12,6 @@ use PDF;
 
 class AtivityRawController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -158,17 +139,17 @@ class AtivityRawController extends Controller
     public function exportPdf()
     {
         if (Auth::user()->is_admin == 1) {
-        $parameters = Parameter::all();
-        $mes = date("m");
-        $data = AtivityRaw::whereMonth('created_at', $mes)->get();
-        //$user = $data[0]->user->name;
-        //return response($user);
-        $encabezados= ['id', 'Código', 'Nombre', 'Cantidad', 'Operación', 'Usuario'];
-        $campos= ['id', 'code', 'name', 'total', 'input_output', 'user_id'];
-        $panel = "Reporte General";
-        $pdf = PDF::loadView('report.pdf', compact('panel', 'parameters', 'campos', 'encabezados', 'data'));
-        return $pdf->download('Movimientos Materia Prima.pdf');
-    }
-    return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
-    }
+            $parameters = Parameter::all();
+            $mes = date("m");
+            $data = AtivityRaw::whereMonth('created_at', $mes)->get();
+            //$user = $data[0]->user->name;
+            //return response($user);
+            $encabezados= ['id', 'Código', 'Nombre', 'Cantidad', 'Operación', 'Usuario'];
+            $campos= ['id', 'code', 'name', 'total', 'input_output', 'user_id'];
+            $panel = "Reporte General";
+            $pdf = PDF::loadView('report.pdf', compact('panel', 'parameters', 'campos', 'encabezados', 'data'));
+            return $pdf->download('Movimientos Materia Prima.pdf');
+        }
+        return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
+        }
 }
