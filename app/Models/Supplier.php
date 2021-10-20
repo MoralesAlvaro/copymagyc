@@ -18,7 +18,6 @@ class Supplier extends Model
         'business',
         'telephone',
         'email',
-        'dui',
         'active',
     ];
 

@@ -23,7 +23,6 @@ class CreateSuppliersTable extends Migration
             $table->string('business');
             $table->string('telephone', 8)->unique();
             $table->string('email', 50)->unique();
-            $table->string('dui', 10)->unique();
             $table->boolean('active')->nullable()->default(false);
             $table->softDeletes();
             $table->timestamps();

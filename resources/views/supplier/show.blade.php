@@ -37,7 +37,6 @@
                         <x-p-card :result="$data->business" nameLabel="Giro" icono="fas fa-building" />
                         <x-p-card :result="$data->telephone" nameLabel="Télefono" icono="fas fa-phone-square" />
                         <x-p-card :result="$data->email" nameLabel="Correo" icono="fas fa-envelope" />
-                        <x-p-card :result="$data->dui" nameLabel="dui" icono="fas fa-address-card" />
 
                         <x-p-card :result="$data->active == 1 ? 'Activo' : 'Inactivo' " nameLabel="Estado"
                             icono="fas fa-toggle-on" />

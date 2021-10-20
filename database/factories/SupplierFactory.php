@@ -31,7 +31,6 @@ class SupplierFactory extends Factory
             'business' => $this->faker->sentence(),
             'telephone' => $this->faker->numerify(),
             'email' => $this->faker->unique()->safeEmail(),
-            'dui' => Str::random(10),
             'active' => $this->faker->randomElement(['0', '1']),
         ];
     }

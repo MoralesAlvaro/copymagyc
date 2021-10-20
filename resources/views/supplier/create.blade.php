@@ -109,15 +109,6 @@
                                     <x-auth-validation-errors class="" :errors="$errors" campo="email" />
                                 </div>
 
-                                {{-- DUI --}}
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="dui">DUI</label>
-                                        <input type="text" name="dui" class="form-control" id="dui" required placeholder="DUI" value="{{ old('dui') }}" maxlength="9">
-                                    </div>
-                                    <x-auth-validation-errors class="" :errors="$errors" campo="dui" />
-                                </div>
-
                                 {{-- Active --}}
                                 <div class="col-md-6">
                                     <div class="form-group">

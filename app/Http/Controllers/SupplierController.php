@@ -50,7 +50,6 @@ class SupplierController extends Controller
             'business' => ['required', 'string', 'max:255'],
             'telephone' => ['required', 'numeric', 'min:8', 'unique:suppliers'],
             'email' => ['required', 'email', 'max:50', 'unique:suppliers'],
-            'dui' => ['required', 'numeric', 'min:9', 'unique:suppliers'],
             'active' => 'required|boolean',
         ]);
 
@@ -111,12 +110,11 @@ class SupplierController extends Controller
                 'business' => 'required|string|max:255',
                 'telephone' => 'required|numeric|min:8|unique:suppliers,telephone,'.$supplier->id,
                 'email' => 'required|email|max:50|unique:suppliers,email,'.$supplier->id,
-                'dui' => 'required|numeric|min:9|unique:suppliers,dui,'.$supplier->id,
                 'active' => 'required|boolean',
             ]);
 
             // Verificando si ha habido modificaciones
-            $campos = ['name', 'address', 'nrc', 'nit', 'company_type', 'business', 'telephone', 'email', 'dui', 'active'];
+            $campos = ['name', 'address', 'nrc', 'nit', 'company_type', 'business', 'telephone', 'email', 'active'];
             foreach ($campos as $item) {
                 // Valor traido de la bd
                 $valor_campo_old = $supplier->$item;

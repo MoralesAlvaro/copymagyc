@@ -128,15 +128,6 @@
                                     <x-auth-validation-errors class="" :errors="$errors" campo="email" />
                                 </div>
 
-                                {{-- dui --}}
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="dui">Dui</label>
-                                        <input type="text" name="dui" class="form-control" id="dui"
-                                            value="{{ $data->dui }}" placeholder="" maxlength="9" minlength="9">
-                                    </div>
-                                    <x-auth-validation-errors class="" :errors=" $errors" campo="dui" />
-                                </div>
                                 {{-- Active --}}
                                 <div class="col-md-6">
                                     <div class="form-group">

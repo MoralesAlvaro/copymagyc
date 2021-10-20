@@ -24,7 +24,6 @@ class Supplier extends JsonResource
             'company_type' => $this->company_type,
             'business' => $this->business,
             'telephone' => $this->telephone,
-            'dui' => $this->dui,
             'active' => $this->active == 0 ? false : true,
             'created' => $this->created_at->diffForHumans(),
             'updated' => $this->updated_at->diffForHumans(),
