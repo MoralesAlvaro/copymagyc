@@ -21,7 +21,7 @@ use App\Http\Controllers\AtivityRawController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect('login');
 })->middleware(['auth'])->name('login');
 
 Route::get('/dashboard', function () {
