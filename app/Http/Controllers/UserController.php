@@ -21,10 +21,11 @@ class UserController extends Controller
             $slug = 'user';
             $encabezados= ['ID', 'Nombre', 'Apellido', 'Correo'];
             $campos= ['id', 'name', 'surname', 'email'];
-            $data = User::orderBy('id', 'DESC')->paginate(1);
+            $data = User::orderBy('id', 'DESC')->paginate();
             return view('user.index', compact('slug','encabezados', 'campos', 'data'));
         }
         return redirect()->back()->with('success', 'No estas autorizado para llevar a cabo esta operación !.');
+        
     }
 
     /**
@@ -50,7 +51,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::user()->is_admin == 1) {   
+        if (Auth::user()->is_admin == 1) {
             // Validando data
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
@@ -93,7 +94,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        if (Auth::user()->is_admin == 1) {
+        if (Auth::user()->is_admin == 1 or Auth::user()->id == $id) {
             $slug = 'user';
             $data = User::findOrFail($id);
             return view('user.show', compact('slug', 'data'));
@@ -109,7 +110,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        if (Auth::user()->is_admin == 1) {   
+        if (Auth::user()->is_admin == 1 or Auth::user()->id == $id) {
             $slug = 'user';
             $data = User::findOrFail($id);
             return view('user.edit', compact('slug', 'data'));

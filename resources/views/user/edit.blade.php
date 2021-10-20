@@ -79,6 +79,7 @@
                             </div>
 
                             {{-- is_admin --}}
+                            @if(Auth::user()->is_admin == 1)
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="is_admin">Tipo usuario</label>
@@ -94,8 +95,10 @@
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="is_admin" />
                             </div>
+                            @endif
                             
                             {{-- Active --}}
+                            @if(Auth::user()->is_admin == 1)
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="active">Estado</label>
@@ -111,7 +114,7 @@
                                 </div>
                                 <x-auth-validation-errors class="" :errors="$errors" campo="active" />
                             </div>
-
+                            @endif
 
                         </div>
                     </div>
