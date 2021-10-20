@@ -33,7 +33,7 @@
                             <div class="row">
 
                                 {{-- Name --}}
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="name">Nombre</label>
                                         <input type="text" name="name" class="form-control" id="name"
@@ -147,15 +147,15 @@
                             </div>
                             <!-- /.card-body -->
 
-                            <div class="row">
-
+                            <div class="row m-4">
                                 <div class="col-md-6">
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-info btn-lg btn-block">Enviar</button>
+                                    <div class="">
+                                        <button type="submit" class="btn btn-info btn-lg btn-block text-dark">Enviar</button>
                                     </div>
                                 </div>
+                            </div>
                     </form>
                 </x-form-container>
             </div><!-- /.container-fluid -->
