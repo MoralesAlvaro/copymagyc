@@ -85,7 +85,7 @@ class AtivityRawController extends Controller
             'total' => $request->amount,
             'code' => $rawMaterial->code,
             'name' => $rawMaterial->name,
-            'input_output' => 'Salida',
+            'input_output' => 'Entrada',
             'user_id' => Auth::user()->id,
         ]);
 

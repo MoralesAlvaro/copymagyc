@@ -1,5 +1,35 @@
 @extends('layouts.auth')
 
+<div class="container">
+  <!-- Mensaje de confirmación -->
+  @if (session('success'))
+  <div class="mx-4 ml-8">
+      <div class="card-body">
+          <div class="alert alert-success text-center msg alert-dismissible fade show" id="success" role="alert">
+              <strong>{{ session('success') }}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+      </div>
+  </div>
+  @endif
+
+  @if (session('warning'))
+  <div class="mx-1 ml-8">
+      <div class="card-body">
+          <div class="alert alert-warning text-center msg alert-dismissible fade show" id="success" role="alert">
+              <strong>{{ session('warning') }}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+      </div>
+  </div>
+  @endif
+  <!-- EDN Mensaje de confirmación -->
+</div>
+<!-- Main content -->
 @section('content')
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
@@ -31,34 +61,14 @@
                 <x-auth-validation-errors class="" :errors="$errors" campo="email"/>
               </div>
               <div class="row">
-                <div class="col-8">
-                  <div class="icheck-primary">
-                    <input type="checkbox" id="remember">
-                    <label for="remember">
-                      Recuerdame
-                    </label>
-                  </div>
-                </div>
                 <!-- /.col -->
-                <div class="col-4">
-                  <button type="submit" class="btn btn-info btn-block">Iniciar</button>
-                </div>
+                <button type="submit" class="btn btn-info btn-block">Iniciar</button>
                 <!-- /.col -->
               </div>
             </form>
       
-            {{-- <div class="social-auth-links text-center mt-2 mb-3">
-              <a href="#" class="btn btn-block btn-primary">
-                <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-              </a>
-              <a href="#" class="btn btn-block btn-danger">
-                <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-              </a>
-            </div> --}}
-            <!-- /.social-auth-links -->
-      
             <p class="mb-1">
-              <a href="forgot-password.html">Olvide mi contraseña</a>
+              <a href="{{url('forgot-password')}}">Olvide mi contraseña</a>
             </p>
           </div>
           <!-- /.card-body -->

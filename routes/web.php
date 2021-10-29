@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RawMaterialController;
 use App\Http\Controllers\StationeryTypeController;
 use App\Http\Controllers\AtivityRawController;
+use App\Http\Controllers\PasswordResetLinkController;
 
 
 /*
@@ -49,6 +50,11 @@ Route::group([
     // Mensual
     Route::get('activity_raw/mount', [AtivityRawController::class, 'mount'])->middleware(['auth'])->name('activity_raw.mount');
     Route::get('activity_raw/exportPdf', [AtivityRawController::class, 'exportPdf'])->middleware(['auth'])->name('activity_raw.exportPdf');
+
+    // Reseteo de contraseña
+    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->middleware(['auth'])->name('forgot-password');
+    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->middleware(['auth'])->name('forgot-password');
 });
+
 
 require __DIR__.'/auth.php';

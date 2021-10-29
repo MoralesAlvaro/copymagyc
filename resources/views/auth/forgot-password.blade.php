@@ -1,36 +1,86 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@extends('layouts.auth')
+{{-- Notification --}}
+    <div class="container">
+        <!-- Mensaje de confirmación -->
+        @if (session('success'))
+        <div class="mx-4 ml-8">
+            <div class="card-body">
+                <div class="alert alert-success text-center msg alert-dismissible fade show" id="success" role="alert">
+                    <strong>{{ session('success') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
         </div>
+        @endif
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        @if (session('warning'))
+        <div class="mx-1 ml-8">
+            <div class="card-body">
+                <div class="alert alert-warning text-center msg alert-dismissible fade show" id="success" role="alert">
+                    <strong>{{ session('warning') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        @endif
+        <!-- EDN Mensaje de confirmación -->
+    </div>
+    <!-- Main content -->
+@section('content')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+<!-- /.login-logo -->
+<div class="card card-outline card-primary">
+    <div class="card-header text-center">
+        <span><img style="width:35%" src="{{url('img/logo/logo.jpeg')}}" alt=""></span>
+    </div>
+    <div class="card-body">
+        <p class="login-box-msg"><strong>Recuperar Contraseña</strong></p>
 
-        <form method="POST" action="{{ route('password.email') }}">
+        <form method="POST" action="{{ url('forgot-password') }}">
             @csrf
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <div class="input-group mb-3">
+                <input type="email" name="email" id="email" class="form-control" placeholder="Correo electrónico" value="{{ old('email') }}">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                    </div>
+                </div>
             </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
+            <x-auth-validation-errors class="" :errors="$errors" campo="email" />
+            <div class="input-group mb-3">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            <x-auth-validation-errors class="" :errors="$errors" campo="password"/>
+            <div class="input-group mb-3">
+                <input type="password" name="password_confirmation" id="password_confirmation"  class="form-control" placeholder="Confirmar contraseña">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary btn-block">Request new password</button>
+                </div>
+                <!-- /.col -->
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+        <p class="mt-3 mb-1">
+            <a href="{{url('login')}}">Login</a>
+        </p>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+@endsection
