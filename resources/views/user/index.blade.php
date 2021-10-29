@@ -4,7 +4,6 @@
 
 <div class="content-wrapper pt-3">
 
-    {{-- Notification --}}
     <div class="container">
         <!-- Mensaje de confirmación -->
         @if (session('success'))
@@ -17,10 +16,23 @@
                     </button>
                 </div>
             </div>
-        </div >
+        </div>
+        @endif
+      
+        @if (session('warning'))
+        <div class="mx-1 ml-8">
+            <div class="card-body">
+                <div class="alert alert-warning text-center msg alert-dismissible fade show" id="success" role="alert">
+                    <strong>{{ session('warning') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
         @endif
         <!-- EDN Mensaje de confirmación -->
-    </div>
+      </div>
     <!-- Main content -->
     <section class="content">
         <div class="m-2 px-4">

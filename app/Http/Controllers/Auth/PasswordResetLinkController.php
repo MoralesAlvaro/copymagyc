@@ -52,4 +52,6 @@ class PasswordResetLinkController extends Controller
 
         return redirect('/login')->with('success', 'Cambio de contraseña exitoso!.'); 
     }
+
+    
 }

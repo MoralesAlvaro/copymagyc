@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
@@ -213,5 +214,19 @@ class UserController extends Controller
 
         }
         return redirect()->back()->with('warning', 'No estas autorizado para llevar a cabo esta operación !.');
+    }
+
+    public function update_password(Request $request)
+    {
+        if ($request->password != $request->password_confirmation) {
+            return redirect('/user'.'/'.$id)->with('warning', 'Las contraseñas no son iguales!.');  
+        }
+        
+        $user = User::find($request->user_id);
+        $pass = bcrypt($request->password);
+        $user->password = $pass;
+        $user->update();
+
+        return redirect('/user'.'/'.$user->id)->with('success', 'Contraseña actualizada con exito!.');  
     }
 }

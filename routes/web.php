@@ -54,6 +54,7 @@ Route::group([
     // Reseteo de contraseña
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->middleware(['auth'])->name('forgot-password');
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->middleware(['auth'])->name('forgot-password');
+    Route::post('update-password', [UserController::class, 'update_password'])->middleware(['auth'])->name('update-password');
 });
 
 
