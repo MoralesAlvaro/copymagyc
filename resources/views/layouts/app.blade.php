@@ -42,7 +42,12 @@
       <strong>Copyright &copy; 2022 <a href="{{url('dashboard')}}">COPY MAGIC</a>.</strong>
       All rights reserved.
       <div class="float-right d-none d-sm-inline-block">
-        <b>Develop by </b><a href="{{url('dashboard')}}">Estudiantes de la ULS</a>
+        <style>
+          .creative{
+            width: 100px;
+          }
+        </style>
+        <a href="https://creativecommons.org/licenses/by/4.0/legalcode"><img src="{{url('img/logo/creative.png')}}" class="rounded creative" alt=""></a>
       </div>
     </footer>
 

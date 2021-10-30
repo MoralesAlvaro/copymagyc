@@ -218,6 +218,7 @@ class UserController extends Controller
 
     public function update_password(Request $request)
     {
+        $id = Auth::user()->id;
         if ($request->password != $request->password_confirmation) {
             return redirect('/user'.'/'.$id)->with('warning', 'Las contraseñas no son iguales!.');  
         }
