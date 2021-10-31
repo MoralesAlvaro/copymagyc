@@ -40,7 +40,7 @@ class AtivityRawController extends Controller
             'total' => $request->amount,
             'code' => $rawMaterial->code,
             'name' => $rawMaterial->name,
-            'input_output' => 'Entrada',
+            'input_output' => 'Salida',
             'user_id' => Auth::user()->id,
         ]);
 
